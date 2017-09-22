@@ -1,0 +1,383 @@
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=250000bps@81.25%:2000000bps@80.00% (f_clock=80000000,nom_brp=20,nom_tseg1=12,nom_tseg2=3,nom_sjw=1,data_brp=4,data_tseg1=7,data_tseg2=2,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=250000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=125000bps@80.00%:1000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64,data_brp=2,data_tseg1=31,data_tseg2=8,data_sjw=8)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=125000bps:1000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=250000bps@80.00%:2000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32,data_brp=2,data_tseg1=15,data_tseg2=4,data_sjw=4)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=250000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=500000bps@80.00%:4000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=7,data_tseg2=2,data_sjw=2)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=500000bps:4000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=1000000bps@80.00%:8000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=3,data_tseg2=1,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=1000000bps:8000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=125000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=125000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=250000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=250000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=500000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=500000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=1000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=1000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+~~~ CANopen FD bit-rates ~~~
+
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=125000bps@80.00%:2000000bps@70.00% (f_clock=80000000,nom_brp=4,nom_tseg1=127,nom_tseg2=32,nom_sjw=32,data_brp=4,data_tseg1=6,data_tseg2=3,data_sjw=3)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=125000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=250000bps@80.00%:2000000bps@70.00% (f_clock=80000000,nom_brp=4,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=4,data_tseg1=6,data_tseg2=3,data_sjw=3)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=250000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=500000bps@80.00%:2000000bps@75.00% (f_clock=80000000,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=14,data_tseg2=5,data_sjw=5)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=500000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=1000000bps@80.00%:5000000bps@75.00% (f_clock=80000000,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=5,data_tseg2=2,data_sjw=2)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=1000000bps:5000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+~~~ UV Software ~~~
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=125000bps@80.00%:1000000bps@80.00% (f_clock=80000000,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=1,data_brp=2,data_tseg1=31,data_tseg2=8,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=125000bps:1000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=250000bps@80.00%:2000000bps@80.00% (f_clock=80000000,nom_brp=1,nom_tseg1=255,nom_tseg2=64,nom_sjw=1,data_brp=1,data_tseg1=31,data_tseg2=8,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=250000bps:2000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=500000bps@80.00%:4000000bps@80.00% (f_clock=80000000,nom_brp=1,nom_tseg1=127,nom_tseg2=32,nom_sjw=1,data_brp=1,data_tseg1=15,data_tseg2=4,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=500000bps:4000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=1000000bps@80.00%:8000000bps@80.00% (f_clock=80000000,nom_brp=1,nom_tseg1=63,nom_tseg2=16,nom_sjw=1,data_brp=1,data_tseg1=7,data_tseg2=2,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=1000000bps:8000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+can_test (CAN Tester for PCAN-USB interfaces), version 0.4 of Sep 22 2017
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Baudrate=2000000bps@80.00%:10000000bps@75.00% (f_clock=80000000,nom_brp=1,nom_tseg1=31,nom_tseg2=8,nom_sjw=1,data_brp=2,data_tseg1=2,data_tseg2=1,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Baudrate=2000000bps:10000000bps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD interface, version 2.2.1 (#1@fd130000)
+Firmware: PCBUSB library, version 0.8.689 for macOS (x86_64)
+Software: CAN API V3 for PEAK PCAN-Basic Interfaces, Version 3.2
+Copyright (C) 2007,2012-2017 by UV Software, Berlin
