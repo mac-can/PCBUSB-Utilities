@@ -1,0 +1,375 @@
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=250000kbps@81.2%:2000000kbps@80.0% (f_clock_mhz=80,nom_brp=20,nom_tseg1=12,nom_tseg2=3,nom_sjw=1,data_brp=4,data_tseg1=7,data_tseg2=2,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=250kbps:2000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=125000kbps@80.0%:1000000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64,data_brp=2,data_tseg1=31,data_tseg2=8,data_sjw=8)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=125kbps:1000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=250000kbps@80.0%:2000000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32,data_brp=2,data_tseg1=15,data_tseg2=4,data_sjw=4)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=250kbps:2000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=500000kbps@80.0%:4000000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=7,data_tseg2=2,data_sjw=2)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=500kbps:4000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=1000000kbps@80.0%:8000000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=3,data_tseg2=1,data_sjw=1)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=1000kbps:8000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD (op_mode=04h)
+Bit-rate=125000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=125kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD (op_mode=04h)
+Bit-rate=250000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=250kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD (op_mode=04h)
+Bit-rate=500000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=500kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD (op_mode=04h)
+Bit-rate=1000000kbps@80.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=1000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+~~~ CANopen FD bit-rates ~~~
+
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=125000kbps@80.0%:2000000kbps@70.0% (f_clock_mhz=80,nom_brp=4,nom_tseg1=127,nom_tseg2=32,nom_sjw=32,data_brp=4,data_tseg1=6,data_tseg2=3,data_sjw=3)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=125kbps:2000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=250000kbps@80.0%:2000000kbps@70.0% (f_clock_mhz=80,nom_brp=4,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=4,data_tseg1=6,data_tseg2=3,data_sjw=3)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=250kbps:2000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=500000kbps@80.0%:2000000kbps@75.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=14,data_tseg2=5,data_sjw=5)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=500kbps:2000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=1000000kbps@80.0%:5000000kbps@75.0% (f_clock_mhz=80,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=5,data_tseg2=2,data_sjw=2)
+
+Hardware=PCAN-USB1...OK!
+Bit-rate=1000kbps:5000kbps...OK!
+
+Transmitting message(s)...OK!
+
+Message(s)=0
+Error(s)=0
+Call(s)=0
+Time=0sec
+
+Hardware: PCAN-USB FD (DeviceNo=0x00)
+Firmware: PCBUSB 0.9.0.902
+(IOUSBKit, x86_64)
+Copyright (C) 2012-2020 by
+UV Software, Berlin, Germany
+Software: API Version 4.4.1.902
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+~~~ UV Software ~~~
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=125000kbps@80.0%:1000000kbps@80.0% (f_clock_mhz=80,nom_speed=125000,nom_sp=80.0,data_speed=1000000,data_sp=80.0)
+
+Hardware=PCAN-USB1...FAILED!
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=250000kbps@80.0%:2000000kbps@80.0% (f_clock_mhz=80,nom_speed=250000,nom_sp=80.0,data_speed=2000000,data_sp=80.0)
+
+Hardware=PCAN-USB1...FAILED!
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=500000kbps@80.0%:4000000kbps@80.0% (f_clock_mhz=80,nom_speed=500000,nom_sp=80.0,data_speed=4000000,data_sp=80.0)
+
+Hardware=PCAN-USB1...FAILED!
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=1000000kbps@80.0%:8000000kbps@80.0% (f_clock_mhz=80,nom_speed=1000000,nom_sp=80.0,data_speed=8000000,data_sp=80.0)
+
+Hardware=PCAN-USB1...FAILED!
+CAN Tester for PCAN-USB Interfaces, Version 0.5.1-914 (macOS)
+Copyright (C) 2007,2012-2020 by UV Software, Berlin
+
+This software is freeware without any warranty or support!
+
+Op.-Mode=CANFD+BRS (op_mode=0Ch)
+Bit-rate=2000000kbps@80.0%:10000000kbps@75.0% (f_clock_mhz=80,nom_speed=2000000,nom_sp=80.0,data_speed=10000000,data_sp=80.0)
+
+Hardware=PCAN-USB1...FAILED!
