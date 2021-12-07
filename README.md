@@ -1,14 +1,16 @@
 ### macOS&reg; Utilities for PCAN-USB Interfaces
 
-Copyright &copy; 2012-2020 by UV Software, Berlin.
+Copyright &copy; 2012-2021 by UV Software, Berlin.
 
-# Running CAN and CAN FD on a Mac&reg;
+# Running CAN and CAN FD on Mac&reg;
 
 The PCBUSB library realizes a CAN to USB user-space driver under macOS for PCAN-USB interfaces from PEAK-System Technik, Darmstadt.
 It supports up to 8 PCAN-USB and PCAN-USB FD devices.
 
 The dynamic library libPCBUSB is running under macOS 10.13 and later (x86_64 architecture).
-See the [MacCAN](https://www.mac-can.com/) website for details.
+Since version 0.10.1 it is running under macOS Big Sur (11.x) or macOS Monterey (12.x) as Universal macOS Binary.  
+
+See the [MacCAN](https://www.mac-can.com/) website to learn more.
 
 ## PCBUSB Utilities
 
@@ -43,6 +45,8 @@ Since version 0.4 (Build 698 of September 22, 2017):
 - PCAN-USB FD (product code: IPEH-004022)
 
 ## This and That
+
+Since version 0.5.3 macOS Big Sur (11.x) or macOS Monterey (12.x) is required to run the PCBUSB utilities as Universal macOS Binary.
 
 This repo contains only binaries files of the PCBUSB utilities.
 
