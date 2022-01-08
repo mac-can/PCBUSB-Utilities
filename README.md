@@ -1,6 +1,6 @@
 ### macOS&reg; Utilities for PCAN-USB Interfaces
 
-Copyright &copy; 2012-2021 by UV Software, Berlin.
+Copyright &copy; 2012-2022 by UV Software, Berlin.
 
 # Running CAN and CAN FD on Mac&reg;
 
@@ -44,6 +44,12 @@ Only the following devices from PEAK-System Technik are supported:
 Since version 0.4 (Build 698 of September 22, 2017):
 - PCAN-USB FD (product code: IPEH-004022)
 
+## Known Bugs and Caveats
+
+For a list of known bugs and caveats in the underlying PCBUSB library read the documentation of the appropriated library version.
+
+PCAN-USB Pro FD devices are supported since version 0.10 of the PCBUSB library, but only the first channel (CAN1).
+
 ## This and That
 
 Since version 0.5.3 macOS Big Sur (11.x) or macOS Monterey (12.x) is required to run the PCBUSB utilities as Universal macOS Binary.
@@ -59,7 +65,8 @@ Please note the copyright and license agreement.
 ### Trademarks
 
 Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. \
-PCAN is a registered trademark of PEAK-System Technik GmbH, Darmstadt, Germany.
+PCAN is a registered trademark of PEAK-System Technik GmbH, Darmstadt, Germany. \
+All other company, product and service names mentioned herein are trademarks, registered trademarks or service marks of their respective owners.
 
 ### Hazard Note
 
@@ -67,13 +74,5 @@ _If you connect your CAN device to a real CAN network when using these utilities
 
 ### Contact
 
-Uwe Vogt \
-UV Software \
-Chausseestrasse 33a \
-10115 Berlin \
-Germany
-
 E-Mail: mailto://info@mac.can.com \
 Internet: https://www.mac-can.com
-
-##### *Happy CANgineering!*
