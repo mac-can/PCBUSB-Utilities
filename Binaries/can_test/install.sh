@@ -12,6 +12,7 @@ then
 	else
 		mkdir "$InstallDir"; cp "$BaseDir/$ProjName" "$InstallDir/$ProjName"
 	fi
+	chmod 755 "$InstallDir/$ProjName"
 else
 	echo "error"
 fi
