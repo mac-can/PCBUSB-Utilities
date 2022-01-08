@@ -61,6 +61,8 @@ Hazard note:
 License typw:
   This software is freeware without any warranty or support!
 Change log:
+- Version 0.5 SR2 (Build 962 of December 22, 2020):
+  Compiled against PCBUSB v0.9 sources (PCAN-USB Pro FD CAN1). 
 - Version 0.5 SR1 (Build 915 of June 28, 2020):
   Compiled against PCBUSB v0.9 sources (<MacTypes.h>)
 - Version 0.5 (Build 850 of December 1, 2019):
