@@ -1,6 +1,7 @@
 ### macOS&reg; Utilities for PCAN-USB Interfaces
 
-Copyright &copy; 2012-2022 by UV Software, Berlin.
+*Copyright &copy; 2012-2022 by UV Software, Berlin.*\
+*All rights reserved.*
 
 # Running CAN and CAN FD on Mac&reg;
 
