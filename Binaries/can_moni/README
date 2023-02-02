@@ -1,6 +1,6 @@
 CAN Monitor (for PCAN-USB interfaces on macOS, x86_64 & arm64)
 
-Copyright (C) 2007,2012-2022 by UV Software, Berlin
+Copyright (C) 2007,2012-2023 by UV Software, Berlin.
 
 Usage: can_moni <interface> [<option>...]
 Options:
@@ -61,6 +61,10 @@ Hazard note:
 License typw:
   This software is freeware without any warranty or support!
 Change log:
+- Version 0.5 SR6 (Build 1679 of February 2, 2023):
+  Display device id. when listing available CAN interfaces (option -T).
+  Fixed a bug with default CAN FD bit-rate settings (250kbps:2000kbps).
+  Compiled against PCBUSB v0.12 sources as Universal macOS Binary.
 - Version 0.5 SR5 (Build 1240 of July 31, 2022):
   Fixed the CAN FD URB issue ('Messages lost on high CAN FD bit-rates').
   Compiled against PCBUSB v0.11.2 sources as Universal macOS Binary.
