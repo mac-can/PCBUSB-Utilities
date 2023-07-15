@@ -1,6 +1,6 @@
 ### macOS&reg; Utilities for PCAN-USB Interfaces
 
-*Copyright &copy;  2012-2023 by UV Software, Berlin.*\
+*Copyright &copy; 2012-2023 by UV Software, Berlin.*\
 *All rights reserved.*
 
 # Running CAN and CAN FD on Mac&reg;
@@ -36,6 +36,24 @@ Type `can_moni --help` to display all program options.
 Originally developed for electronic environmental tests on an embedded Linux system with SocketCAN, I´m using it for many years as a traffic generator for CAN stress-tests.
 
 Type `can_test --help` to display all program options.
+
+## Target Platform
+
+- macOS 11.0 and later (Intel and Apple silicon)
+
+## Development Environment
+
+### macOS Ventura
+
+- macOS Ventura (13.4.1) on a Mac mini (M1, 2020)
+- Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+- Xcode Version 14.3.1 (14E300c)
+
+### macOS Big Sur
+
+- macOS Big Sur (11.7.8) on a MacBook Pro (2019)
+- Apple clang version 13.0.0 (clang-1300.0.29.30)
+- Xcode Version 13.2.1 (13C100)
 
 ## Supported Devices
 
