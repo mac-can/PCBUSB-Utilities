@@ -73,6 +73,9 @@ Hazard note:
 License type:
   This software is freeware without any warranty or support!
 Change log:
+- Version 0.6 SR8 (Build 1864 of November 3, 2023):
+  Fixed a bug with new PCAN-USB FD product version (hardware 6.0)
+  Compiled against PCBUSB v0.12.2 sources as Universal macOS Binary
 - Version 0.6 SR7 (Build 1791 of July 15, 2023):
   Fixed some bugs with bit-rate string conversion (SAM issue among others)
   Compiled against PCBUSB v0.12.1 sources as Universal macOS Binary
