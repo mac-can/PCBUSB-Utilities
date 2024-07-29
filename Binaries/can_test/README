@@ -1,30 +1,34 @@
-CAN Tester (for PCAN-USB interfaces on macOS, x86_64 & arm64)
+CAN Tester for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
 
-Copyright (C) 2007,2012-2023 by UV Software, Berlin.
+Copyright (c) 2005-2010,2012-2024 by Uwe Vogt, UV Software, Berlin
 
 Usage: can_test <interface> [<option>...]
 Options for receiver test (default):
  -r, --receive               count received messages until ^C is pressed
  -n, --number=<number>       check up-counting numbers starting with <number>
  -s, --stop                  stop on error (with option --number)
- -m, --mode=(2.0|FDF[+BSR])  CAN operation mode: CAN 2.0 or CAN FD format
+ -m, --mode=(2.0|FDF[+BRS])  CAN operation mode: CAN 2.0 or CAN FD format
      --listen-only           monitor mode (transmitter is off)
+     --no-status-frames      suppress reception of status frames
+     --no-remote-frames      suppress reception of remote frames
  -b, --baudrate=<baudrate>   CAN 2.0 bit timing in kbps (default=250)
      --bitrate=<bit-rate>    CAN FD bit rate (as a string)
  -v, --verbose               show detailed bit rate settings
+ -y, --trace=(ON|OFF)        write a trace file (default=OFF)
 Options for transmitter test:
  -t, --transmit=<time>       send messages for the given time in seconds, or
- -f, --frames=<number>,      alternatively send the given number of messages,
+ -f, --frames=<number>,      alternatively send the given number of messages, or
      --random=<number>       optionally with random cycle time and data length
  -c, --cycle=<cycle>         cycle time in milliseconds (default=0) or
  -u, --usec=<cycle>          cycle time in microseconds (default=0)
- -d, --data=<length>         send data of given length (default=8)
+ -d, --dlc=<length>          send messages of given length (default=8)
  -i, --id=<can-id>           use given identifier (default=100h)
  -n, --number=<number>       set first up-counting number (default=0)
- -m, --mode=(2.0|FDF[+BSR])  CAN operation mode: CAN 2.0 or CAN FD format
+ -m, --mode=(2.0|FDF[+BRS])  CAN operation mode: CAN 2.0 or CAN FD format
  -b, --baudrate=<baudrate>   CAN 2.0 bit timing in kbps (default=250)
      --bitrate=<bit-rate>    CAN FD bit rate (as a string)
  -v, --verbose               show detailed bit rate settings
+ -y, --trace=(ON|OFF)        write a trace file (default=OFF)
 Options:
  -L, --list-boards           list all supported CAN interfaces and exit
  -T, --test-boards           list all available CAN interfaces and exit
@@ -68,46 +72,52 @@ Examples:
   1000kbps:8000kbps    f_clock_mhz=80,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=3,data_tseg2=1,data_sjw=1
   2000kbps:10000kbps   f_clock_mhz=80,nom_brp=1,nom_tseg1=31,nom_tseg2=8,nom_sjw=1,data_brp=2,data_tseg1=2,data_tseg2=1,data_sjw=1
 Hazard note:
-  Do not connect your CAN device to a real CAN network when using this program.
-  This can damage your application.
+  If you connect your CAN device to a real CAN network when using this program,
+  you might damage your application.
 License type:
   This software is freeware without any warranty or support!
 Change log:
-- Version 0.6 SR8 (Build 1864 of November 3, 2023):
+- Version 0.6 of July 29, 2024:
+  Realized new program options:
+  - '--no-status-frames'  suppress reception of status frames (default=ON)
+  - '--no-remote-frames'  suppress reception of remote frames (default=ON)
+  - '--trace=(ON|OFF)'    write a trace file (default=OFF)
+  Compiled against PCBUSB v0.13 sources as Universal macOS Binary
+- Version 0.6 SR8 of November 3, 2023:
   Fixed a bug with new PCAN-USB FD product version (hardware 6.0)
   Compiled against PCBUSB v0.12.2 sources as Universal macOS Binary
-- Version 0.6 SR7 (Build 1791 of July 15, 2023):
+- Version 0.6 SR7 of July 15, 2023:
   Fixed some bugs with bit-rate string conversion (SAM issue among others)
   Compiled against PCBUSB v0.12.1 sources as Universal macOS Binary
-- Version 0.5 SR6 (Build 1677 of February 2, 2023):
+- Version 0.5 SR6 of February 2, 2023:
   Display device id. when listing available CAN interfaces (option -T)
   Fixed a bug with default CAN FD bit-rate settings (250kbps:2000kbps)
   Compiled against PCBUSB v0.12 sources as Universal macOS Binary
-- Version 0.5 SR5 (Build 1236 of July 31, 2022):
+- Version 0.5 SR5 of July 31, 2022:
   Fixed the CAN FD URB issue ('Messages lost on high CAN FD bit-rates')
   Compiled against PCBUSB v0.11.2 sources as Universal macOS Binary
-- Version 0.5 SR4 (Build 1152 of February 5, 2022):
+- Version 0.5 SR4 of February 5, 2022:
   Fixed a bug with channel state 'occupied' when used by another process
   Compiled against PCBUSB v0.11 sources as Universal macOS Binary
-- Version 0.5 SR3 (Build 1029 of December 7, 2021):
+- Version 0.5 SR3 of December 7, 2021:
   Compiled against PCBUSB v0.10.1 sources as Universal macOS Binary
-- Version 0.5 SR2 (Build 961 of December 22, 2020):
+- Version 0.5 SR2 of December 22, 2020:
   Compiled against PCBUSB v0.9 sources (PCAN-USB Pro FD CAN1).
-- Version 0.5 SR1 (Build 914 of June 28, 2020):
+- Version 0.5 SR1 of June 28, 2020:
   Compiled against PCBUSB v0.9 sources (<MacTypes.h>).
-- Version 0.5 (Build 844 of December 1, 2019):
+- Version 0.5 of December 1, 2019:
   Reworked command-line option handling:
   --listen-only - monitor mode (transmitter is off)
   --list-boards - list all supported CAN interfaces
   --test boards - list all available CAN interfaces
   Compiled against PCBUSB v0.8.1 sources
-- Version 0.4 (Build 697 of September 22, 2017):
+- Version 0.4 of September 22, 2017:
   Support of PCAN-USB FD interfaces
-- Version 0.3 (Build 371 of November 23, 2014):
+- Version 0.3 of November 23, 2014:
   Time-stamps are taken from CAN controller
-- Version 0.2 (Build 140 of May 17, 2013):
+- Version 0.2 of May 17, 2013:
   Initial revision
-- Version 0.1 (Build 86 of July 6, 2012):
+- Version 0.1 of July 6, 2012:
   (reverted)
 Known bugs and caveats:
 - See documentation of PCBUSB library for known bugs and caveats
