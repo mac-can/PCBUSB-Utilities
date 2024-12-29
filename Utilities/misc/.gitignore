@@ -1,0 +1,4 @@
+# ignore the unneeded stuff from svn
+dosopt.*
+tester.c
+update.xml
