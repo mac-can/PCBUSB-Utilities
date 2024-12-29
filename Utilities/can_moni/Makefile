@@ -32,7 +32,6 @@ MAIN_DIR = .
 
 MISC_DIR = $(HOME_DIR)/misc
 DRIVER_DIR = $(HOME_DIR)/driver
-INCLUDE_DIR = /usr/local/include
 
 OBJECTS = $(OUTDIR)/main.o $(OUTDIR)/bitrates.o $(OUTDIR)/timer.o $(OUTDIR)/printmsg.o
 
@@ -45,7 +44,9 @@ HEADERS = -I$(MAIN_DIR) \
 ifneq ($(VARIANT),STANDALONE)
   DEFINES += -DOPTION_PCBUSB_STANDALONE=0
 
-  HEADERS += -I$(INCLUDE_DIR)
+  HEADERS += 
+
+  OBJECTS += $(OUTDIR)/PCBUSB.o
 
   BIN_DIR = $(HOME_DIR)/Binaries
 else
@@ -79,9 +80,7 @@ LDFLAGS += -rpath /usr/local/lib
 
 LIBRARIES = -lpthread
 
-ifneq ($(VARIANT),STANDALONE)
-  LIBRARIES += -lPCBUSB
-else
+ifeq ($(VARIANT),STANDALONE)
   LDFLAGS += -Wl,-framework -Wl,IOKit -Wl,-framework -Wl,CoreFoundation
 endif
 
@@ -140,6 +139,9 @@ install:
 
 
 $(OUTDIR)/main.o: $(MAIN_DIR)/main.c
+	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
+
+$(OUTDIR)/PCBUSB.o: $(HOME_DIR)/PCBUSB.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/bitrates.o: $(MISC_DIR)/bitrates.c
