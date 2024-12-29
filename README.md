@@ -1,15 +1,15 @@
-### macOS&reg; Utilities for PCAN-USB Interfaces
+### macOS&reg; Utilities for PEAK-System PCAN USB Interfaces
 
-*Copyright &copy; 2012-2024 by UV Software, Berlin.*\
-*All rights reserved.*
+*Copyright &copy; 2005-2010 by Uwe Vogt, UV Software, Friedrichshafen.* \
+*Copyright &copy; 2012-2024 by Uwe Vogt, UV Software, Berlin.*
 
 # Running CAN and CAN FD on Mac&reg;
 
-The PCBUSB library realizes a CAN to USB user-space driver under macOS for PCAN-USB interfaces from PEAK-System Technik, Darmstadt.
+The PCBUSB library realizes a CAN to USB user-space driver under macOS for PCAN USB interfaces from PEAK-System Technik, Darmstadt.
 It supports up to 8 PCAN-USB or PCAN-USB FD devices.
 
 The dynamic library libPCBUSB is running under macOS 10.13 and later (x86_64 architecture).
-Since version 0.10.1 it is running under macOS Big Sur (11.x) or macOS Monterey (12.x) as Universal macOS Binary.  
+Since version 0.10.1 it is running under macOS Big Sur (11.x) and later as Universal macOS Binary.  
 
 See the [MacCAN](https://www.mac-can.com/) website to learn more.
 
@@ -18,8 +18,6 @@ See the [MacCAN](https://www.mac-can.com/) website to learn more.
 This repo offers two command line tools that are build upon the PCBUSB library:
 - `can_moni` to view incoming CAN messages
 - `can_test` to test CAN communication
-
-Both tools run as a standalone program, therefor it is not necessary to install the PCBUSB library to run them.
 
 ### can_moni
 
@@ -39,27 +37,26 @@ Type `can_test --help` to display all program options.
 
 ### Target Platform
 
-- macOS 12.0 and later (Intel and Apple silicon)
+- macOS 13.0 and later (Intel and Apple silicon)
 
 ### Development Environment
 
-#### macOS Sonoma
+#### macOS Sequoia
 
-- macOS Sonoma (14.5) on a Mac mini (M1, 2020)
-- Apple clang version 15.0.0 (clang-1500.3.9.4)
-- Xcode Version 15.4 (15F31d)
+- macOS Sequoia (15.2) on a Mac mini (M1, 2020)
+- Apple clang version 16.0.0 (clang-1600.0.26.6)
 
-#### macOS Monterey
+#### macOS Ventura
 
-- macOS Monterey (12.7.5) on a MacBook Pro (2019)
-- Apple clang version 13.0.0 (clang-1300.0.29.30)
-- Xcode Version 13.2.1 (13C100)
+- macOS Ventura (13.7.1) on a MacBook Pro (2019)
+- Apple clang version 14.0.3 (clang-1403.0.22.14.1)
 
 ### Supported Devices
 
 Only the following devices from PEAK-System Technik are supported:
 - PCAN-USB (product code: IPEH-002021, IPEH-002022)
 - PCAN-USB FD (product code: IPEH-004022)
+- PCAN-USB Pro FD (item no. IPEH-004061), but only the first channel (CAN1)
 
 ### Known Bugs and Caveats
 
@@ -67,17 +64,41 @@ For a list of known bugs and caveats in the underlying PCBUSB library read the d
 
 PCAN-USB Pro FD devices are supported since version 0.10 of the PCBUSB library, but only the first channel (CAN1).
 
-## This and That
+### Licenses
 
-Since version 0.5.3 macOS 11 or newer is required to run the PCBUSB utilities as Universal macOS Binary.
+This repository contains two versions of the PCBUSB utilities that are licensed under different licences:
+- **Standalone Version**:
+  This version of the utilities does not require the PCBUSB library to be installed.
+  The utilities are offered in binary form only.
+  This version can be found in the folder `$(PROJROOT)/Binaries`.
+- **Open-source Version**:
+  This version links the PCBUSB library at runtime.
+  The PCBUSB library itself is not part of this work.
+  See folder `$(PROJROOT)/Utilities`.
 
-This repo contains only binaries files of the PCBUSB utilities.
+#### Licence for the Standalone Version
 
-### License
+This program is freeware without any warranty or support! \
+Please note the copyright and license agreements.
 
-The PCBUSB utilities are freeware without any warranty or support!
+#### Licence for the Open-Source Version
 
-Please note the copyright and license agreement.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, see <https://www.gnu.org/licenses/>.
+
+Note:  The libPCBUSB is licensed under a freeware license without any
+warranty or support.  The libPCBUSB is not part of this program.
+It can be downloaded from <https://www.mac-can.com/>.
 
 ### Trademarks
 
