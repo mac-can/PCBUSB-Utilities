@@ -3,6 +3,8 @@
 *Copyright &copy; 2005-2010 by Uwe Vogt, UV Software, Friedrichshafen.* \
 *Copyright &copy; 2012-2024 by Uwe Vogt, UV Software, Berlin.*
 
+![macOS Build](https://github.com/mac-can/PCBUSB-Utilities/actions/workflows/macos-build.yml/badge.svg)
+
 # Running CAN and CAN FD on Mac&reg;
 
 The PCBUSB library realizes a CAN to USB user-space driver under macOS for PCAN USB interfaces from PEAK-System Technik, Darmstadt.
@@ -60,13 +62,13 @@ Only the following devices from PEAK-System Technik are supported:
 
 ### Known Bugs and Caveats
 
-For a list of known bugs and caveats in the underlying PCBUSB library read the documentation of the appropriated library version.
-
-PCAN-USB Pro FD devices are supported since version 0.10 of the PCBUSB library, but only the first channel (CAN1).
+- For a list of known bugs and caveats see tab [Issues](https://github.com/mac-can/PCBUSB-Utilities/issues) in the GitHub repo.
+- For a list of known bugs and caveats in the underlying PCBUSB library read the documentation of the appropriated library version.
 
 ### Licenses
 
 This repository contains two versions of the PCBUSB utilities that are licensed under different licences:
+
 - **Standalone Version**:
   This version of the utilities does not require the PCBUSB library to be installed.
   The utilities are offered in binary form only.
