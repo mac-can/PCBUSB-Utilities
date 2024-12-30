@@ -739,7 +739,7 @@ static int list_interfaces(void)
 
     fprintf(stdout, "Supported hardware:\n");
     for (i = 0; i < PCAN_BOARDS; i++) {
-        fprintf(stdout, "\"%s\" (VendorName=\"PEAK\", LibraryId=400, BoardType=%lxh)\n", can_board[i].name, can_board[i].type);
+        fprintf(stdout, "\"%s\" (VendorName=\"PEAK-System\", LibraryId=400, BoardType=%lxh)\n", can_board[i].name, can_board[i].type);
     }
     return i;
 }
