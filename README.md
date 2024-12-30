@@ -1,4 +1,4 @@
-### macOS&reg; Utilities for PEAK-System PCAN USB Interfaces
+### macOS&reg; CAN Utilities for PEAK-System PCAN USB Interfaces
 
 *Copyright &copy; 2005-2010 by Uwe Vogt, UV Software, Friedrichshafen.* \
 *Copyright &copy; 2012-2024 by Uwe Vogt, UV Software, Berlin.*
