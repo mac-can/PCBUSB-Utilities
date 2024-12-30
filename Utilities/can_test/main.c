@@ -7,7 +7,7 @@
  *  copyright :  (c) 2005-2012 by UV Software, Friedrichshafen
  *               (c) 2013-2024 by UV Software, Berlin
  *
- *  revision  :  $Rev: 2061 $ of $Date: 2024-12-29 18:36:36 +0100 (So, 29 Dez 2024) $
+ *  revision  :  $Rev: 2065 $ of $Date: 2024-12-30 16:48:19 +0100 (Mo, 30 Dez 2024) $
  * 
  *  author(s) :  Uwe Vogt, UV Software
  *
@@ -140,6 +140,7 @@ static void sigterm(int signo);
 static void usage(FILE *stream, const char *program);
 static void version(FILE *stream, const char *program);
 
+static int list_bitrates(BYTE op_mode);
 static int list_interfaces(void);
 static int test_interfaces(void);
 
@@ -217,6 +218,10 @@ int main(int argc, char *argv[])
         {"listen-only", no_argument, 0, 'M'},
         {"no-status-frames", no_argument, 0, 'S'},
         {"no-remote-frames", no_argument, 0, 'R'},
+        // {"code", required_argument, 0, '1'},
+        // {"mask", required_argument, 0, '2'},
+        // {"xtd-code", required_argument, 0, '3'},
+        // {"xtd-mask", required_argument, 0, '4'},
         {"receive", no_argument, 0, 'r'},
         {"number", required_argument, 0, 'n'},
         {"stop", no_argument, 0, 's'},
@@ -229,6 +234,7 @@ int main(int argc, char *argv[])
         {"dlc", required_argument, 0, 'd'},
         {"id", required_argument, 0, 'i'},
         {"trace", required_argument, 0, 'y'},
+        {"list-bitrates", optional_argument, 0, 'l'},
         {"list-boards", no_argument, 0, 'L'},
         {"test-boards", no_argument, 0, 'T'},
         {"help", no_argument, 0, 'h'},
@@ -246,7 +252,7 @@ int main(int argc, char *argv[])
         return errno;
     }
     /* scan command-line */
-    while ((opt = getopt_long(argc, (char * const *)argv, "b:vm:rn:st:f:R:c:u:d:i:y:aLTvh", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, (char * const *)argv, "b:vm:rn:st:f:R:c:u:d:i:y:laLTvh", long_options, NULL)) != -1) {
         switch (opt) {
         /* option '--baudrate=<baudrate>' (-b) */
         case 'b':
@@ -484,6 +490,29 @@ int main(int argc, char *argv[])
                 return 1;
             }
             break;
+        /* option '--list-bitrates' */
+        case 'l':
+            fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
+            /* list bit-rates (depending on operation mode) */
+            if (optarg != NULL) {
+                if (op++) {
+                    fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
+                    return 1;
+                }
+                if (!strcasecmp(optarg, "default") || !strcasecmp(optarg, "classic") ||
+                    !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0"))
+                    op_mode = PCAN_MESSAGE_STANDARD;
+                else if (!strcasecmp(optarg, "CANFD") || !strcasecmp(optarg, "FDF") || !strcasecmp(optarg, "FD"))
+                    op_mode = PCAN_MESSAGE_FD;
+                else if (!strcasecmp(optarg, "CANFD+BRS") || !strcasecmp(optarg, "FDF+BRS") || !strcasecmp(optarg, "FD+BRS"))
+                    op_mode = PCAN_MESSAGE_FD | PCAN_MESSAGE_BRS;
+                else {
+                    fprintf(stderr, "%s: illegal argument for option `--list-bitrates'\n", basename(argv[0]));
+                    return 1;
+                }
+            }
+            (void)list_bitrates(op_mode);
+            return 1;
         case 'a':  /* option '--list-boards' (-a, deprecated) */
         case 'L':  /* option '--list-boards' (-L) */
             fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
@@ -773,6 +802,42 @@ static int test_interfaces(void)
         fprintf(stdout, "No hardware found!\n");
     }
     return n;
+}
+
+static int list_bitrates(BYTE op_mode)
+{
+    if (op_mode & PCAN_MESSAGE_FD) {
+        if (op_mode & PCAN_MESSAGE_BRS) {
+            fprintf(stdout, "Bitrates - CAN FD with Bit-rate Switching (BRS):\n");
+            fprintf(stdout, "  1000kbps@80.0%%:8000kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=3,data_tseg2=1,data_sjw=1\"\n");
+            fprintf(stdout, "   500kbps@80.0%%:4000kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=7,data_tseg2=2,data_sjw=2\"\n");
+            fprintf(stdout, "   250kbps@80.0%%:2000kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32,data_brp=2,data_tseg1=15,data_tseg2=4,data_sjw=4\"\n");
+            fprintf(stdout, "   125kbps@80.0%%:1000kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64,data_brp=2,data_tseg1=31,data_tseg2=8,data_sjw=8\"\n");
+            return 4;
+        }
+        else {
+            fprintf(stdout, "Bitrates - CAN FD without Bit-rate Switching (BRS):\n");
+            fprintf(stdout, "  1000kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8\"\n");
+            fprintf(stdout, "   500kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16\"\n");
+            fprintf(stdout, "   250kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=127,nom_tseg2=32,nom_sjw=32\"\n");
+            fprintf(stdout, "   125kbps@80.0%%=\"f_clock=80000000,nom_brp=2,nom_tseg1=255,nom_tseg2=64,nom_sjw=64\"\n");
+            return 4;
+        }
+    }
+    else {
+        fprintf(stdout, "Bitrates - CAN Classic (SJA1000 bit-timing register):\n");
+        fprintf(stdout, "  1000kbps@75.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_1M);
+        fprintf(stdout, "   800kbps@80.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_800K);
+        fprintf(stdout, "   500kbps@87.5%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_500K);
+        fprintf(stdout, "   250kbps@87.5%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_250K);
+        fprintf(stdout, "   125kbps@87.5%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_125K);
+        fprintf(stdout, "   100kbps@85.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_100K);
+        fprintf(stdout, "    50kbps@85.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_50K);
+        fprintf(stdout, "    20kbps@85.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_20K);
+        fprintf(stdout, "    10kbps@85.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_10K);
+        fprintf(stdout, "     5kbps@68.0%%=\"BTR0BTR1=0x%04x\"\n", PCAN_BAUD_5K);
+        return 10;
+    }
 }
 
 static uint64_t tx_random(TPCANHandle channel, BYTE mode, uint32_t can_id, uint8_t dlc, uint32_t delay, uint64_t number, uint64_t offset)
@@ -1419,36 +1484,41 @@ static void usage(FILE *stream, const char *program)
     fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
     fprintf(stream, "Usage: %s <interface> [<option>...]\n", program);
     fprintf(stream, "Options for receiver test (default):\n");
-    fprintf(stream, " -r, --receive               count received messages until ^C is pressed\n");
-    fprintf(stream, " -n, --number=<number>       check up-counting numbers starting with <number>\n");
-    fprintf(stream, " -s, --stop                  stop on error (with option --number)\n");
-    fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])  CAN operation mode: CAN 2.0 or CAN FD format\n");
-    fprintf(stream, "     --listen-only           monitor mode (transmitter is off)\n");
-    fprintf(stream, "     --no-status-frames      suppress reception of status frames\n");
-    fprintf(stream, "     --no-remote-frames      suppress reception of remote frames\n");
-    fprintf(stream, " -b, --baudrate=<baudrate>   CAN 2.0 bit timing in kbps (default=250)\n");
-    fprintf(stream, "     --bitrate=<bit-rate>    CAN FD bit rate (as a string)\n");
-    fprintf(stream, " -v, --verbose               show detailed bit rate settings\n");
-    fprintf(stream, " -y, --trace=(ON|OFF)        write a trace file (default=OFF)\n");
+    fprintf(stream, " -r, --receive                 count received messages until ^C is pressed\n");
+    fprintf(stream, " -n, --number=<number>         check up-counting numbers starting with <number>\n");
+    fprintf(stream, " -s, --stop                    stop on error (with option --number)\n");
+    fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format\n");
+    fprintf(stream, "     --listen-only             monitor mode (transmitter is off)\n");
+    fprintf(stream, "     --no-status-frames        suppress reception of status frames\n");
+    fprintf(stream, "     --no-remote-frames        suppress reception of remote frames\n");
+    // fprintf(stream, "     --code=<id>               acceptance code for 11-bit IDs (default=0x%03X)\n", CODE_11BIT);
+    // fprintf(stream, "     --mask=<id>               acceptance mask for 11-bit IDs (default=0x%03X)\n", MASK_11BIT);
+    // fprintf(stream, "     --xtd-code=<id>           acceptance code for 29-bit IDs (default=0x%08X)\n", CODE_29BIT);
+    // fprintf(stream, "     --xtd-mask=<id>           acceptance mask for 29-bit IDs (default=0x%08X)\n", MASK_29BIT);
+    fprintf(stream, " -b, --baudrate=<baudrate>     CAN 2.0 bit timing in kbps (default=250)\n");
+    fprintf(stream, "     --bitrate=<bit-rate>      CAN FD bit rate (as a string)\n");
+    fprintf(stream, " -v, --verbose                 show detailed bit rate settings\n");
+    fprintf(stream, " -y, --trace=(ON|OFF)          write a trace file (default=OFF)\n");
     fprintf(stream, "Options for transmitter test:\n");
-    fprintf(stream, " -t, --transmit=<time>       send messages for the given time in seconds, or\n");
-    fprintf(stream, " -f, --frames=<number>,      alternatively send the given number of messages, or\n");
-    fprintf(stream, "     --random=<number>       optionally with random cycle time and data length\n");
-    fprintf(stream, " -c, --cycle=<cycle>         cycle time in milliseconds (default=0) or\n");
-    fprintf(stream, " -u, --usec=<cycle>          cycle time in microseconds (default=0)\n");
-    fprintf(stream, " -d, --dlc=<length>          send messages of given length (default=8)\n");
-    fprintf(stream, " -i, --id=<can-id>           use given identifier (default=100h)\n");
-    fprintf(stream, " -n, --number=<number>       set first up-counting number (default=0)\n");
-    fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])  CAN operation mode: CAN 2.0 or CAN FD format\n");
-    fprintf(stream, " -b, --baudrate=<baudrate>   CAN 2.0 bit timing in kbps (default=250)\n");
-    fprintf(stream, "     --bitrate=<bit-rate>    CAN FD bit rate (as a string)\n");
-    fprintf(stream, " -v, --verbose               show detailed bit rate settings\n");
-    fprintf(stream, " -y, --trace=(ON|OFF)        write a trace file (default=OFF)\n");
-    fprintf(stream, "Options:\n");
-    fprintf(stream, " -L, --list-boards           list all supported CAN interfaces and exit\n");
-    fprintf(stream, " -T, --test-boards           list all available CAN interfaces and exit\n");
-    fprintf(stream, " -h, --help                  display this help screen and exit\n");
-    fprintf(stream, "     --version               show version information and exit\n");
+    fprintf(stream, " -t, --transmit=<time>         send messages for the given time in seconds, or\n");
+    fprintf(stream, " -f, --frames=<number>,        alternatively send the given number of messages, or\n");
+    fprintf(stream, "     --random=<number>         optionally with random cycle time and data length\n");
+    fprintf(stream, " -c, --cycle=<cycle>           cycle time in milliseconds (default=0) or\n");
+    fprintf(stream, " -u, --usec=<cycle>            cycle time in microseconds (default=0)\n");
+    fprintf(stream, " -d, --dlc=<length>            send messages of given length (default=8)\n");
+    fprintf(stream, " -i, --id=<can-id>             use given identifier (default=100h)\n");
+    fprintf(stream, " -n, --number=<number>         set first up-counting number (default=0)\n");
+    fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format\n");
+    fprintf(stream, " -b, --baudrate=<baudrate>     CAN 2.0 bit timing in kbps (default=250)\n");
+    fprintf(stream, "     --bitrate=<bit-rate>      CAN FD bit rate (as a string)\n");
+    fprintf(stream, " -v, --verbose                 show detailed bit rate settings\n");
+    fprintf(stream, " -y, --trace=(ON|OFF)          write a trace file (default=OFF)\n");
+    fprintf(stream, "Other options:\n");
+    fprintf(stream, "     --list-bitrates[=<mode>]  list standard bit-rate settings and exit\n");
+    fprintf(stream, " -L, --list-boards             list all supported CAN interfaces and exit\n");
+    fprintf(stream, " -T, --test-boards             list all available CAN interfaces and exit\n");
+    fprintf(stream, " -h, --help                    display this help screen and exit\n");
+    fprintf(stream, "     --version                 show version information and exit\n");
     fprintf(stream, "Hazard note:\n");
     fprintf(stream, "  If you connect your CAN device to a real CAN network when using this program,\n");
     fprintf(stream, "  you might damage your application.\n");
