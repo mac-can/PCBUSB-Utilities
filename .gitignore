@@ -1,5 +1,6 @@
 # .gitignore
 .svn
+.vscode
 .objects
 build_no.h
 checker_*.txt
