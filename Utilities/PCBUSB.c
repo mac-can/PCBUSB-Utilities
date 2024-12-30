@@ -6,7 +6,7 @@
 //  Created by Uwe Vogt on 18.08.13.
 //  Copyright (c) 2013-2024 UV Software. All rights reserved.
 //
-//  This software is freeware without any warranty or support!
+//  The library libPCBUSB is freeware without any warranty or support!
 //
 //  NO WARRANTIES: You expressly acknowledge and agree that use of the
 //  SOFTWARE PRODUCT is at your sole risk. The SOFTWARE PRODUCT is provided
@@ -30,6 +30,9 @@
 //  exceed the amount paid for this license to the SOFTWARE PRODUCT. The
 //  entire risk arising out of use or performance of the SOFTWARE PRODUCT
 //  remains with you.
+//
+//  Note:  The macOS library libPCBUSB is not part of this work.
+//         It can be downloaded from <https://www.mac-can.com/>.
 //
 #if defined(__APPLE__)
 #include "PCBUSB.h"
