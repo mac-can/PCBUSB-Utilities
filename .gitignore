@@ -2,6 +2,7 @@
 .svn
 .vscode
 .objects
+.DS_Store
 build_no.h
 checker_*.txt
 Utilities/Driver
