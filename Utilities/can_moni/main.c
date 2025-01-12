@@ -66,9 +66,6 @@
 #endif
 #if defined(__APPLE__)
 static const char APPLICATION[] = "CAN Monitor for PEAK-System PCAN USB Interfaces, Version "VERSION_STRING;
-#else
-static const char APPLICATION[] = "CAN Monitor for PEAK-System PCAN Interfaces, Version "VERSION_STRING;
-#endif
 static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2025 by Uwe Vogt, UV Software, Berlin";
 #if (OPTION_PCBUSB_STANDALONE != 0)
 static const char WARRANTY[]    = "This program is freeware without any warranty or support!";
@@ -91,6 +88,21 @@ static const char LICENSE[]     = "This program is free software; you can redist
                                   "Note: The libPCBUSB is licensed under a freeware license without any\n" \
                                   "warranty or support.  The libPCBUSB is not part of this program.\n" \
                                   "It can be downloaded from <https://www.mac-can.com/>.";
+#endif
+#else
+static const char APPLICATION[] = "CAN Monitor for PEAK-System PCAN Interfaces, Version "VERSION_STRING;
+static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2025 by Uwe Vogt, UV Software, Berlin";
+static const char WARRANTY[]    = "CAN Monitor comes with ABSOLUTELY NO WARRANTY; for details type `--version'.\n\n" \
+                                  "This is free software, and you are welcome to redistribute it\n" \
+                                  "under certain conditions; type `--version' for details.";
+static const char LICENSE[]     = "This program is free software; you can redistribute it and/or modify\n" \
+                                  "it under the terms of the GNU General Public License as published by\n" \
+                                  "the Free Software Foundation; either version 2 of the License, or\n" \
+                                  "(at your option) any later version.\n\n" \
+                                  "This program is distributed in the hope that it will be useful,\n" \
+                                  "but WITHOUT ANY WARRANTY; without even the implied warranty of\n" \
+                                  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" \
+                                  "GNU General Public License for more details.";
 #endif
 
 /*  -----------  includes  -----------------------------------------------
