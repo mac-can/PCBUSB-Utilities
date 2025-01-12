@@ -10,14 +10,14 @@
 The PCBUSB library realizes a CAN to USB user-space driver under macOS for PCAN USB interfaces from PEAK-System Technik, Darmstadt.
 It supports up to 8 PCAN-USB or PCAN-USB FD devices.
 
-The dynamic library libPCBUSB is running under macOS 10.13 and later (x86_64 architecture).
-Since version 0.10.1 it is running under macOS Big Sur (11.x) and later as Universal macOS Binary.  
+The dynamic library libPCBUSB is running under macOS 10.13 and later (Intel x86_64 architecture)
+and since version 0.10.1 under macOS 11.0 and later as Universal macOS Binary (Intel x86_64 architecture and Apple arm64 architecture).  
 
 See the [MacCAN](https://www.mac-can.com/) website to learn more.
 
 ## PCBUSB Utilities
 
-This repo offers two command line tools that are build upon the PCBUSB library:
+This repo offers two CAN command line tools that are build upon the PCBUSB library:
 - `can_moni` to view incoming CAN messages
 - `can_test` to test CAN communication
 
@@ -53,7 +53,7 @@ Type `can_test --help` to display all program options.
 
 #### macOS Ventura
 
-- macOS Ventura (13.7.1) on a MacBook Pro (2019)
+- macOS Ventura (13.7.2) on a MacBook Pro (2019)
 - Apple clang version 14.0.3 (clang-1403.0.22.14.1)
 
 #### Debian 12.9 ("bookworm")
@@ -83,11 +83,11 @@ This repository contains two versions of the PCBUSB utilities that are licensed 
 - **Standalone Version** (macOS only):
   This version of the utilities does not require the PCBUSB library to be installed.
   The utilities are offered in binary form only.
-  The binaries can be found in the folder `$(PROJROOT)/Binaries`.
+  The executables can be found in the folder `$(PROJROOT)/Binaries`.
 - **Open-source Version** (macOS and Linux):
   This version links the PCBUSB library at runtime.
   The PCBUSB library itself is not part of this work.
-  The source code can be found in the folder `$(PROJROOT)/Utilities`.
+  The source code of the utilities can be found in the folder `$(PROJROOT)/Utilities`.
 
 #### Licence for the Standalone Version
 
