@@ -505,7 +505,7 @@ int main(int argc, char *argv[])
             fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
             /* list bit-rates (depending on operation mode) */
             if (optarg != NULL) {
-                if (op++) {
+                if (op != 0) {
                     fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
                     return 1;
                 }
@@ -886,7 +886,6 @@ static uint64_t tx_random(TPCANHandle channel, BYTE mode, uint32_t can_id, uint8
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
-    message.LEN = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);
@@ -1202,7 +1201,6 @@ static uint64_t tx_random_fd(TPCANHandle channel, BYTE mode, uint32_t can_id, ui
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
-    message.DLC = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);

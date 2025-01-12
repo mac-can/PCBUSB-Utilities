@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
 {
     TPCANHandle channel = PCAN_USBBUS1;
     TPCANStatus status;
-    long  intarg;
+    UINT64 intarg;
     int   opt, i;
     long  board = -1; int b;
     BYTE  op_mode = PCAN_MESSAGE_STANDARD; int op = 0;
@@ -530,7 +530,7 @@ int main(int argc, char *argv[])
             fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
             /* list bit-rates (depending on operation mode) */
             if (optarg != NULL) {
-                if (op++) {
+                if (op != 0) {
                     fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
                     return 1;
                 }
