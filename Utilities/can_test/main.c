@@ -5,7 +5,7 @@
  *  purpose   :  CAN Tester goes macOS aka OS X
  *
  *  copyright :  (c) 2005-2012 by UV Software, Friedrichshafen
- *               (c) 2013-2024 by UV Software, Berlin
+ *               (c) 2013-2025 by UV Software, Berlin
  *
  *  revision  :  $Rev: 2065 $ of $Date: 2024-12-30 16:48:19 +0100 (Mo, 30 Dez 2024) $
  * 
@@ -27,20 +27,20 @@
  *
  *  (2) Open-source version with libPCBUSB support
  * 
- *  This program is free software; you can redistribute it and/or modify
+ *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation; either version 2 of the License, or
+ *  the Free Software Foundation, either version 2 of the License, or
  *  (at your option) any later version.
- *  
+ *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- *  
- *  You should have received a copy of the GNU General Public License along
- *  with this program; if not, see <https://www.gnu.org/licenses/>.
- *  
- *  Note: The libPCBUSB is licensed under a freeware license without any
+ * 
+ *  You should have received a copy of the GNU General Public License
+ *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ *
+ *  Note:  The libPCBUSB is licensed under a freeware license without any
  *  warranty or support.  The libPCBUSB is not part of this program.
  *  It can be downloaded from <https://www.mac-can.com/>.
  *
@@ -55,17 +55,23 @@
 #else
 #define VERSION_MAJOR     1
 #define VERSION_MINOR     0
-#define VERSION_PATCH     0
+#define VERSION_PATCH     99
 #endif
 #define VERSION_BUILD     BUILD_NO
 #define VERSION_STRING    TOSTRING(VERSION_MAJOR)"." TOSTRING(VERSION_MINOR) "." TOSTRING(VERSION_PATCH) " (" TOSTRING(BUILD_NO) ")"
 #if defined(__APPLE__)
 #define PLATFORM    "macOS"
+#elif defined(__linux__)
+#define PLATFORM    "Linux"
 #else
 #error Unsupported platform
 #endif
+#if defined(__APPLE__)
 static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN USB Interfaces, Version "VERSION_STRING;
-static const char COPYRIGHT[]   = "Copyright (c) 2005-2010,2012-2024 by Uwe Vogt, UV Software, Berlin";
+#else
+static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN Interfaces, Version "VERSION_STRING;
+#endif
+static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2025 by Uwe Vogt, UV Software, Berlin";
 #if (OPTION_PCBUSB_STANDALONE != 0)
 static const char WARRANTY[]    = "This program is freeware without any warranty or support!";
 static const char LICENSE[]     = "This program is freeware without any warranty or support!\n\n" \
@@ -94,7 +100,11 @@ static const char LICENSE[]     = "This program is free software; you can redist
 #if (OPTION_PCBUSB_STANDALONE != 0)
 #include "pcan_api.h"
 #else
-#include <PCBUSB.h>
+#if defined(__APPLE__)
+#include "PCBUSB.h"
+#else
+#include "PCANBasic.h"
+#endif
 #endif
 #include "bitrates.h"
 #include "timer.h"
@@ -495,7 +505,7 @@ int main(int argc, char *argv[])
             fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
             /* list bit-rates (depending on operation mode) */
             if (optarg != NULL) {
-                if (op++) {
+                if (op != 0) {
                     fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
                     return 1;
                 }
@@ -876,7 +886,6 @@ static uint64_t tx_random(TPCANHandle channel, BYTE mode, uint32_t can_id, uint8
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
-    message.LEN = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);
@@ -1192,7 +1201,6 @@ static uint64_t tx_random_fd(TPCANHandle channel, BYTE mode, uint32_t can_id, ui
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
-    message.DLC = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);

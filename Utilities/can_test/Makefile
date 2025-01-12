@@ -2,7 +2,7 @@
 #	CAN Tester for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
 #
 #	Copyright (c) 2005-2010  Uwe Vogt, UV Software, Friedrichshafen
-#	Copyright (c) 2012-2024  Uwe Vogt, UV Software, Berlin (info@uv-software.com)
+#	Copyright (c) 2012-2025  Uwe Vogt, UV Software, Berlin (info@uv-software.com)
 #
 #	This program is free software: you can redistribute it and/or modify
 #	it under the terms of the GNU General Public License as published by
@@ -32,6 +32,7 @@ MAIN_DIR = .
 
 MISC_DIR = $(HOME_DIR)/misc
 DRIVER_DIR = $(HOME_DIR)/driver
+WRAPPER_DIR = $(HOME_DIR)/macOS
 
 OBJECTS = $(OUTDIR)/main.o $(OUTDIR)/bitrates.o $(OUTDIR)/timer.o
 
@@ -41,10 +42,12 @@ HEADERS = -I$(MAIN_DIR) \
 	-I$(HOME_DIR) \
 	-I$(MISC_DIR)
 
+ifeq ($(current_OS),Darwin)  # macOS - libPCBUSB.dylib
+
 ifneq ($(VARIANT),STANDALONE)
   DEFINES += -DOPTION_PCBUSB_STANDALONE=0
 
-  HEADERS += 
+  HEADERS += -I$(HOME_DIR)/macOS
 
   OBJECTS += $(OUTDIR)/PCBUSB.o
 
@@ -52,7 +55,7 @@ ifneq ($(VARIANT),STANDALONE)
 else
   DEFINES += -DOPTION_PCBUSB_STANDALONE=1
 
-  HEADERS += -I$(DRIVER_DIR)
+  HEADERS += -I$(HOME_DIR)/macOS -I$(DRIVER_DIR)
 
   OBJECTS += $(OUTDIR)/pcan_api.o \
 	$(OUTDIR)/pcan_drv.o \
@@ -90,15 +93,44 @@ CXXFLAGS += -arch arm64 -arch x86_64
 LDFLAGS += -arch arm64 -arch x86_64
 endif
 
-CHECKER  = warning,information
-IGNORE   = -i tester.c -i dosopt.c -i printmsg.c
-
 CXX = clang++
 CC = clang
 LD = clang
+endif
+
+ifeq ($(current_OS),Linux)  # linux - libpcanbasic.so
+
+DEFINES += 
+
+HEADERS += -I$(HOME_DIR)/Linux
+
+OBJECTS += $(OUTDIR)/PCBUSB.o
+
+BIN_DIR = $(HOME_DIR)/Binaries
+
+CFLAGS += -O2 -Wall -Wextra -Wno-parentheses \
+	-fno-strict-aliasing \
+	$(DEFINES) \
+	$(HEADERS)
+
+CXXFLAGS += -O2 -g -Wall -Wextra -pthread \
+	$(DEFINES) \
+	$(HEADERS)
+
+LDFLAGS  +=
+
+LIBRARIES = -lpthread
+
+CXX = g++
+CC = gcc
+LD = gcc
+endif
 
 RM = rm -f
 CP = cp -f
+
+CHECKER  = warning,information
+IGNORE   = -i tester.c -i dosopt.c
 
 OUTDIR = .objects
 BINDIR = $(BIN_DIR)
@@ -141,16 +173,13 @@ install:
 $(OUTDIR)/main.o: $(MAIN_DIR)/main.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
-$(OUTDIR)/PCBUSB.o: $(HOME_DIR)/PCBUSB.c
+$(OUTDIR)/PCBUSB.o: $(WRAPPER_DIR)/PCBUSB.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/bitrates.o: $(MISC_DIR)/bitrates.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/timer.o: $(MISC_DIR)/timer.c
-	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
-
-$(OUTDIR)/printmsg.o: $(MISC_DIR)/printmsg.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/pcan_api.o: $(DRIVER_DIR)/pcan_api.c
