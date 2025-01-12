@@ -1,7 +1,7 @@
 ### macOS&reg; CAN Utilities for PEAK-System PCAN USB Interfaces
 
 *Copyright &copy; 2005-2010 by Uwe Vogt, UV Software, Friedrichshafen.* \
-*Copyright &copy; 2012-2024 by Uwe Vogt, UV Software, Berlin.*
+*Copyright &copy; 2012-2025 by Uwe Vogt, UV Software, Berlin.*
 
 ![macOS Build](https://github.com/mac-can/PCBUSB-Utilities/actions/workflows/macos-build.yml/badge.svg)
 
@@ -20,6 +20,8 @@ See the [MacCAN](https://www.mac-can.com/) website to learn more.
 This repo offers two command line tools that are build upon the PCBUSB library:
 - `can_moni` to view incoming CAN messages
 - `can_test` to test CAN communication
+
+_Note: These utilities can also be build and used on Linux with PEAK's chardev driver._
 
 ### can_moni
 
@@ -40,6 +42,7 @@ Type `can_test --help` to display all program options.
 ### Target Platform
 
 - macOS 13.0 and later (Intel and Apple silicon)
+- Debian GNU/Linux 12 (Linux Kernel 6.x)
 
 ### Development Environment
 
@@ -52,6 +55,14 @@ Type `can_test --help` to display all program options.
 
 - macOS Ventura (13.7.1) on a MacBook Pro (2019)
 - Apple clang version 14.0.3 (clang-1403.0.22.14.1)
+
+#### Debian 12.9 ("bookworm")
+- Debian 6.1.123-1 (2024-11-22) x86_64 GNU/Linux
+- gcc (Debian 12.2.0-14) 12.2.0
+- PCAN Driver and Library for Linux v8.19
+
+### Required PCBUSB Library
+libPCBUSB.x.y.dylib - Version 0.13 or later (Latest is Greatest!)
 
 ### Supported Devices
 
@@ -69,14 +80,14 @@ Only the following devices from PEAK-System Technik are supported:
 
 This repository contains two versions of the PCBUSB utilities that are licensed under different licences:
 
-- **Standalone Version**:
+- **Standalone Version** (macOS only):
   This version of the utilities does not require the PCBUSB library to be installed.
   The utilities are offered in binary form only.
-  This version can be found in the folder `$(PROJROOT)/Binaries`.
-- **Open-source Version**:
+  The binaries can be found in the folder `$(PROJROOT)/Binaries`.
+- **Open-source Version** (macOS and Linux):
   This version links the PCBUSB library at runtime.
   The PCBUSB library itself is not part of this work.
-  See folder `$(PROJROOT)/Utilities`.
+  The source code can be found in the folder `$(PROJROOT)/Utilities`.
 
 #### Licence for the Standalone Version
 
@@ -106,6 +117,9 @@ It can be downloaded from <https://www.mac-can.com/>.
 
 Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. \
 PCAN is a registered trademark of PEAK-System Technik GmbH, Darmstadt, Germany. \
+POSIX is a registered trademark of the Institute of Electrical and Electronic Engineers, Inc. \
+GNU C/C++ is a registered trademark of Free Software Foundation, Inc. \
+Linux is a registered trademark of Linus Torvalds. \
 All other company, product and service names mentioned herein may be trademarks, registered trademarks, or service marks of their respective owners.
 
 ### Hazard Note

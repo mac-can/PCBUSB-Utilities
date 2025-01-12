@@ -4,7 +4,7 @@
 //  Wrapper for libPCBUSB
 //
 //  Created by Uwe Vogt on 18.08.13.
-//  Copyright (c) 2013-2024 UV Software. All rights reserved.
+//  Copyright (c) 2013-2025 UV Software. All rights reserved.
 //
 //  The library libPCBUSB is freeware without any warranty or support!
 //

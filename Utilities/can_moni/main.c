@@ -5,7 +5,7 @@
  *  purpose   :  CAN Monitor goes macOS aka OS X
  *
  *  copyright :  (c) 2007,2012 by UV Software, Friedrichshafen
- *               (c) 2013-2024 by UV Software, Berlin
+ *               (c) 2013-2025 by UV Software, Berlin
  *
  *  revision  :  $Rev: 2065 $ of $Date: 2024-12-30 16:48:19 +0100 (Mo, 30 Dez 2024) $
  * 
@@ -53,17 +53,23 @@
 #else
 #define VERSION_MAJOR     1
 #define VERSION_MINOR     0
-#define VERSION_PATCH     0
+#define VERSION_PATCH     99
 #endif
 #define VERSION_BUILD     BUILD_NO
 #define VERSION_STRING    TOSTRING(VERSION_MAJOR)"." TOSTRING(VERSION_MINOR) "." TOSTRING(VERSION_PATCH) " (" TOSTRING(BUILD_NO) ")"
 #if defined(__APPLE__)
 #define PLATFORM    "macOS"
+#elif defined(__linux__)
+#define PLATFORM    "Linux"
 #else
 #error Unsupported platform
 #endif
+#if defined(__APPLE__)
 static const char APPLICATION[] = "CAN Monitor for PEAK-System PCAN USB Interfaces, Version "VERSION_STRING;
-static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2024 by Uwe Vogt, UV Software, Berlin";
+#else
+static const char APPLICATION[] = "CAN Monitor for PEAK-System PCAN Interfaces, Version "VERSION_STRING;
+#endif
+static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2025 by Uwe Vogt, UV Software, Berlin";
 #if (OPTION_PCBUSB_STANDALONE != 0)
 static const char WARRANTY[]    = "This program is freeware without any warranty or support!";
 static const char LICENSE[]     = "This program is freeware without any warranty or support!\n\n" \
@@ -92,7 +98,11 @@ static const char LICENSE[]     = "This program is free software; you can redist
 #if (OPTION_PCBUSB_STANDALONE != 0)
 #include "pcan_api.h"
 #else
-#include <PCBUSB.h>
+#if defined(__APPLE__)
+#include "PCBUSB.h"
+#else
+#include "PCANBasic.h"
+#endif
 #endif
 #include "bitrates.h"
 #include "printmsg.h"
@@ -199,7 +209,7 @@ int main(int argc, char *argv[])
 {
     TPCANHandle channel = PCAN_USBBUS1;
     TPCANStatus status;
-    SInt64 intarg;
+    long  intarg;
     int   opt, i;
     long  board = -1; int b;
     BYTE  op_mode = PCAN_MESSAGE_STANDARD; int op = 0;
@@ -869,7 +879,7 @@ static uint64_t receive(TPCANHandle channel, int mode_time, int mode_id, int mod
         if ((status = CAN_Read(channel, &message, &timestamp)) == PCAN_ERROR_OK) {
             if (!(message.MSGTYPE & PCAN_MESSAGE_STATUS)) {
                 if (((message.ID < MAX_ID) && can_id[message.ID]) || ((message.ID >= MAX_ID) && can_id_xtd)) {
-                    fprintf(stdout, "%-7llu ", frames++);
+                    fprintf(stdout, "%-7" PRIu64 " ", frames++);
                     /* --- CAN 2. 0 time-stamp --- */
                     msec = ((unsigned long long)timestamp.millis_overflow << 32) + (unsigned long long)timestamp.millis;
                     ts.tv_sec = (long)(msec / 1000ull);
@@ -954,7 +964,7 @@ static uint64_t receive_fd(TPCANHandle channel, int mode_time, int mode_id, int 
         if ((status = CAN_ReadFD(channel, &message, &timestamp)) == PCAN_ERROR_OK) {
             if (!(message.MSGTYPE & PCAN_MESSAGE_STATUS)) {
                 if (((message.ID < MAX_ID) && can_id[message.ID]) || ((message.ID >= MAX_ID) && can_id_xtd)) {
-                    fprintf(stdout, "%-7llu ", frames++);
+                    fprintf(stdout, "%-7" PRIu64 " ", frames++);
                     /* --- CAN FD time-stamp --- */
                     ts.tv_sec = (long)(timestamp / 1000000ull);
                     ts.tv_usec = (long)(timestamp % 1000000ull);
