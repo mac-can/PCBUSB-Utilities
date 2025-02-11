@@ -32,7 +32,7 @@ MAIN_DIR = .
 
 MISC_DIR = $(HOME_DIR)/misc
 DRIVER_DIR = $(HOME_DIR)/driver
-WRAPPER_DIR = $(HOME_DIR)/macOS
+INCLUDE_DIR = $(HOME_DIR)/include
 
 OBJECTS = $(OUTDIR)/main.o $(OUTDIR)/bitrates.o $(OUTDIR)/timer.o $(OUTDIR)/printmsg.o
 
@@ -47,7 +47,7 @@ ifeq ($(current_OS),Darwin)  # macOS - libPCBUSB.dylib
 ifneq ($(VARIANT),STANDALONE)
   DEFINES += -DOPTION_PCBUSB_STANDALONE=0
 
-  HEADERS += -I$(HOME_DIR)/macOS
+  HEADERS += -I$(INCLUDE_DIR)/mac/pcbusb
 
   OBJECTS += $(OUTDIR)/PCBUSB.o
 
@@ -55,7 +55,7 @@ ifneq ($(VARIANT),STANDALONE)
 else
   DEFINES += -DOPTION_PCBUSB_STANDALONE=1
 
-  HEADERS += -I$(HOME_DIR)/macOS -I$(DRIVER_DIR)
+  HEADERS += -I$(INCLUDE_DIR)/mac/pcbusb -I$(DRIVER_DIR)
 
   OBJECTS += $(OUTDIR)/pcan_api.o \
 	$(OUTDIR)/pcan_drv.o \
@@ -102,7 +102,7 @@ ifeq ($(current_OS),Linux)  # linux - libpcanbasic.so
 
 DEFINES += 
 
-HEADERS += -I$(HOME_DIR)/Linux
+HEADERS += -I$(INCLUDE_DIR)/linux/pcanbasic
 
 OBJECTS += $(OUTDIR)/PCBUSB.o
 
@@ -173,7 +173,7 @@ install:
 $(OUTDIR)/main.o: $(MAIN_DIR)/main.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
-$(OUTDIR)/PCBUSB.o: $(WRAPPER_DIR)/PCBUSB.c
+$(OUTDIR)/PCBUSB.o: $(MISC_DIR)/PCBUSB.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/bitrates.o: $(MISC_DIR)/bitrates.c
