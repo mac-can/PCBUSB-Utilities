@@ -1,0 +1,4 @@
+.svn
+# not needed yet
+CanIpcServer.*
+CanIpcClient.*
