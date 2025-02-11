@@ -17,9 +17,10 @@ See the [MacCAN](https://www.mac-can.com/) website to learn more.
 
 ## PCBUSB Utilities
 
-This repo offers two CAN command line tools that are build upon the PCBUSB library:
+This repo offers three CAN command line tools that are build upon the PCBUSB library:
 - `can_moni` to view incoming CAN messages
 - `can_test` to test CAN communication
+- `can_port` to run CAN over Ethernet
 
 _Note: These utilities can also be build and used on Linux with PEAK's chardev driver._
 
@@ -39,34 +40,45 @@ Originally developed for electronic environmental tests on an embedded Linux sys
 
 Type `can_test --help` to display all program options.
 
-### Target Platform
+#### can_port
 
-- macOS 13.0 and later (Intel and Apple silicon)
+`can_port` is a command line tool designed to open a network socket for CAN-to-Ethernet communication.
+It connects to a CAN device and handles the data exchange between the CAN bus and local or remote clients.
+
+_Be aware that runing this program may expose your computer to security vulnerabilities, unauthorized access, data interception, denial of service attacks, and resource exhaustion.
+Implement appropriate security measures to mitigate these risks._
+
+Type `can_port --help` to display all program options.
+
+### Target Platforms
+- macOS 13.0 and later (Intel x64 and Apple silicon)
 - Debian GNU/Linux 12 (Linux Kernel 6.x)
 
-### Development Environment
+### Development Environments
 
 #### macOS Sequoia
-
-- macOS Sequoia (15.2) on a Mac mini (M1, 2020)
+- macOS Sequoia (15.3) on a Mac mini (M4 Pro, 2024)
 - Apple clang version 16.0.0 (clang-1600.0.26.6)
 
 #### macOS Ventura
-
-- macOS Ventura (13.7.2) on a MacBook Pro (2019)
+- macOS Ventura (13.7.3) on a MacBook Pro (2019)
 - Apple clang version 14.0.3 (clang-1403.0.22.14.1)
 
 #### Debian 12.9 ("bookworm")
-- Debian 6.1.123-1 (2024-11-22) x86_64 GNU/Linux
+- Debian 6.1.124-1 (2025-01-12) x86_64 GNU/Linux
 - gcc (Debian 12.2.0-14) 12.2.0
-- PCAN Driver and Library for Linux v8.19
 
-### Required PCBUSB Library
-libPCBUSB.x.y.dylib - Version 0.13 or later (Latest is Greatest!)
+### Required Library
+
+#### macOS
+- `libPCBUSB.x.y.dylib` - Version 0.13 or later _(Latest is Greatest!)_
+
+#### Linux
+- `libpcanbasic.so` - PCAN Driver and Library for Linux, Version 8.19
 
 ### Supported Devices
 
-Only the following devices from PEAK-System Technik are supported:
+Only the following devices from PEAK-System Technik are supported under macOS:
 - PCAN-USB (product code: IPEH-002021, IPEH-002022)
 - PCAN-USB FD (product code: IPEH-004022)
 - PCAN-USB Pro FD (item no. IPEH-004061), but only the first channel (CAN1)
