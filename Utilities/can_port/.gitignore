@@ -1,0 +1,11 @@
+# ignore all the old crap from svn
+.project
+.cproject
+build.sh
+build_no.h
+build_no.sh
+deploy.sh
+install.sh
+LICENSE
+COPYRIGHT
+IMPORTANT
