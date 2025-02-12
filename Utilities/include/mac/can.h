@@ -46,18 +46,20 @@
 #ifndef _UAPI_CAN_H
 #define _UAPI_CAN_H
 
+/* Modification for Mac OS X by Uwe Vogt, UV Software, starts here > */
 #ifndef __APPLE__
 #include <linux/types.h>
 #include <linux/socket.h>
 #include <linux/stddef.h> /* for offsetof */
 #else
-#include <MacTypes.h>
+#include <MacTypes.h> /* to map Linux kernel types to Mac OS X types */
 typedef UInt8 __u8;
 typedef UInt16 __u16;
 typedef UInt32 __u32;
 typedef UInt64 __u64;
-typedef unsigned short __kernel_sa_family_t;
 #endif
+/* Modification for Mac OS X by Uwe Vogt, UV Software, ends here < < */
+
 
 /* controller area network (CAN) kernel definitions */
 
@@ -191,7 +193,7 @@ struct canfd_frame {
 /*
  * defined bits for canxl_frame.flags
  *
- * The canxl_frame.flags element contains two bits CANXL_XLF and CANXL_SEC
+ * The canxl_frame.flags element contains three bits CANXL_[XLF|SEC|RRS]
  * and shares the relative position of the struct can[fd]_frame.len element.
  * The CANXL_XLF bit ALWAYS needs to be set to indicate a valid CAN XL frame.
  * As a side effect setting this bit intentionally breaks the length checks
@@ -201,6 +203,7 @@ struct canfd_frame {
  */
 #define CANXL_XLF 0x80 /* mandatory CAN XL frame flag (must always be set!) */
 #define CANXL_SEC 0x01 /* Simple Extended Content (security/segmentation) */
+#define CANXL_RRS 0x02 /* Remote Request Substitution */
 
 /* the 8-bit VCID is optionally placed in the canxl_frame.prio element */
 #define CANXL_VCID_OFFSET 16 /* bit offset of VCID in prio element */
@@ -245,6 +248,14 @@ struct canxl_frame {
 #define CAN_NPROTO	8
 
 #define SOL_CAN_BASE 100
+
+/*
+ * This typedef was introduced in Linux v3.1-rc2
+ * (commit 6602a4b net: Make userland include of netlink.h more sane)
+ * in <linux/socket.h>. It must be duplicated here to make the CAN
+ * headers self-contained.
+ */
+typedef unsigned short __kernel_sa_family_t;
 
 /**
  * struct sockaddr_can - the sockaddr structure for CAN sockets
