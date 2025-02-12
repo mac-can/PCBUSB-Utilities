@@ -2,7 +2,7 @@
  *
  *  project   :  CAN - Controller Area Network
  *
- *  purpose   :  CAN-to-Ethernet Server
+ *  purpose   :  CAN/IPC Server
  *
  *  copyright :  (c) 2008,2012 by UV Software, Friedrichshafen
  *               (c) 2013-2025 by UV Software, Berlin
@@ -16,7 +16,7 @@
  *
  *  -----------  description  --------------------------------------------
  *
- *  CAN-to-Ethernet Server (based on macOS Library for PCAN USB Interfaces)
+ *  CAN/IPC Server (based on macOS Library for PCAN USB Interfaces)
  *
  *  (1) Standalone version with compiled PCBUSB sources
  * 
@@ -62,7 +62,7 @@
 #else
 #error Unsupported platform
 #endif
-static const char APPLICATION[] = "CAN-to-Ethernet Server for PEAK-System PCAN USB Interfaces, Version " VERSION_STRING;
+static const char APPLICATION[] = "CAN/IPC Server for PEAK-System PCAN USB Interfaces, Version " VERSION_STRING;
 static const char COPYRIGHT[]   = "Copyright (c) 2008,2012-2025 by Uwe Vogt, UV Software, Berlin";
 #if (OPTION_PCBUSB_STANDALONE != 0)
 static const char WARRANTY[]    = "This program is freeware without any warranty or support!";
@@ -86,7 +86,7 @@ static const char LICENSE[]     = "This program is free software; you can redist
                                   "warranty or support.  The libPCBUSB is not part of this program.\n" \
                                   "It can be downloaded from <https://www.mac-can.com/>.";
 #endif
-static const char SECURITY[]    = "This program will open a network socket for CAN-to-Ethernet communication.\n" \
+static const char SECURITY[]    = "This program will open a network socket for CAN/IPC communication.\n" \
                                   "This may expose your computer to security vulnerabilities, unauthorized\n" \
                                   "access, data interception, denial of service attacks, and resource\n" \
                                   "exhaustion.\n\n" \
@@ -634,7 +634,7 @@ int main(int argc, char *argv[])
     }
     fprintf(stdout, "\n%s\n\n", ACCEPTED);
     /* - start CAN/IPC server */
-    fprintf(stdout, "CAN-to-Ethernet server on port %u...", port);
+    fprintf(stdout, "CAN/IPC server on port %u...", port);
     fflush(stdout);
     if (!(op_mode & PCAN_MESSAGE_FD))
         server = ipc_server_start(port, IPC_SOCK_TCP, sizeof(struct can_frame), transmit, (void*)&channel, logging);
@@ -661,7 +661,7 @@ int main(int argc, char *argv[])
         (void)CAN_Uninitialize(channel);
         return errno;
     }
-    fprintf(stdout, "CAN-to-Ethernet server on port %u stopped\n\n", port);
+    fprintf(stdout, "CAN/IPC server on port %u stopped\n\n", port);
     /* - teardown */
     if (CAN_GetValue(channel, PCAN_HARDWARE_NAME, buffer, 256) == PCAN_ERROR_OK) {
         fprintf(stdout, "Hardware: %s", buffer);

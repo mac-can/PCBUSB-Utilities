@@ -1,5 +1,5 @@
 #
-#	CAN-to-Ethernet Server for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
+#	CAN/IPC Server for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
 #
 #	Copyright (c) 2007 by Uwe Vogt, UV Software, Friedrichshafen
 #	Copyright (c) 2012-2025  Uwe Vogt, UV Software, Berlin (info@uv-software.com)

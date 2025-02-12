@@ -1,31 +1,24 @@
-CAN-to_Ethernet Server for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
+CAN/IPC Server for PEAK-System PCAN USB Interfaces (macOS, x86_64 & arm64)
 
 Copyright (c) 2008,2012-2025 by Uwe Vogt, UV Software, Berlin.
 
 Usage: can_port <interface>@<port> [<option>...]
 Options:
- -t, --time=(ZERO|ABS|REL)     absolute or relative time (default=0)
- -i  --id=(HEX|DEC|OCT)        display mode of CAN-IDs (default=HEX)
- -d, --data=(HEX|DEC|OCT)      display mode of data bytes (default=HEX)
- -a, --ascii=(ON|OFF)          display data bytes in ASCII (default=ON) 
- -x, --exclude=[~]<id-list>    exclude CAN-IDs: <id>[-<id>]{,<id>[-<id>]}
-     --code=<id>               acceptance code for 11-bit IDs (default=0x000)
-     --mask=<id>               acceptance mask for 11-bit IDs (default=0x7FF)
-     --xtd-code=<id>           acceptance code for 29-bit IDs (default=0x00000000)
-     --xtd-mask=<id>           acceptance mask for 29-bit IDs (default=0x1FFFFFFF)
- -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format
-     --listen-only             monitor mode (transmitter is off)
-     --no-status-frames        suppress reception of status frames
-     --no-remote-frames        suppress reception of remote frames
- -b, --baudrate=<baudrate>     CAN 2.0 bit timing in kbps (default=250)
-     --bitrate=<bit-rate>      CAN FD bit rate (as a string)
- -v, --verbose                 show detailed bit rate settings
- -y, --trace=(ON|OFF)          write a trace file (default=OFF)
-     --list-bitrates[=<mode>]  list standard bit-rate settings and exit
- -L, --list-boards             list all supported CAN interfaces and exit
- -T, --test-boards             list all available CAN interfaces and exit
- -h, --help                    display this help screen and exit
-     --version                 show version information and exit
+ -m, --mode=(2.0|FDF[+BRS])       CAN operation mode: CAN 2.0 or CAN FD format
+     --listen-only                monitor mode (listen-only mode)
+     --no-status-frames           suppress reception of status frames
+     --no-remote-frames           suppress reception of remote frames
+ -b, --baudrate=<baudrate>        CAN bit-timing in kbps (default=250)
+     --bitrate=<bit-rate>         CAN bit-rate settings (as key/value list)
+ -v, --verbose                    show detailed bit-rate settings
+     --trace=(ON|OFF)             write a trace file (default=OFF)
+     --logging=<level>            set logging level (default=0)
+     --security-risks="I ACCEPT"  accept security risks (skip interactive input)
+     --list-bitrates[=<mode>]     list standard bit-rate settings and exit
+ -L, --list-boards                list all supported CAN interfaces and exit
+ -T, --test-boards                list all available CAN interfaces and exit
+ -h, --help                       display this help screen and exit
+     --version                    show version information and exit
 Interfaces:
   PCAN-USB1
   PCAN-USB2
@@ -63,6 +56,11 @@ Examples:
   500kbps:4000kbps     f_clock_mhz=80,nom_brp=2,nom_tseg1=63,nom_tseg2=16,nom_sjw=16,data_brp=2,data_tseg1=7,data_tseg2=2,data_sjw=2
   1000kbps:8000kbps    f_clock_mhz=80,nom_brp=2,nom_tseg1=31,nom_tseg2=8,nom_sjw=8,data_brp=2,data_tseg1=3,data_tseg2=1,data_sjw=1
 Hazard note:
+  If you open a port for socket communication while using this program, it may
+  expose your computer to security vulnerabilities, unauthorized access, data
+  interception, denial of service attacks, and resource exhaustion.
+  It is strongly recommended to implement appropriate security measures to
+  mitigate these risks.
   If you connect your CAN device to a real CAN network when using this program,
   you might damage your application.
 License type:
