@@ -32,7 +32,7 @@ MAIN_DIR = .
 
 MISC_DIR = $(HOME_DIR)/misc
 DRIVER_DIR = $(HOME_DIR)/driver
-WRAPPER_DIR = $(HOME_DIR)/macOS
+INCLUDE_DIR = $(HOME_DIR)/include
 
 OBJECTS = $(OUTDIR)/main.o $(OUTDIR)/bitrates.o $(OUTDIR)/timer.o
 
@@ -47,7 +47,7 @@ ifeq ($(current_OS),Darwin)  # macOS - libPCBUSB.dylib
 ifneq ($(VARIANT),STANDALONE)
   DEFINES += -DOPTION_PCBUSB_STANDALONE=0
 
-  HEADERS += -I$(HOME_DIR)/macOS
+  HEADERS += -I$(INCLUDE_DIR)/mac/pcbusb
 
   OBJECTS += $(OUTDIR)/PCBUSB.o
 
@@ -55,7 +55,7 @@ ifneq ($(VARIANT),STANDALONE)
 else
   DEFINES += -DOPTION_PCBUSB_STANDALONE=1
 
-  HEADERS += -I$(HOME_DIR)/macOS -I$(DRIVER_DIR)
+  HEADERS += -I$(INCLUDE_DIR)/mac/pcbusb -I$(DRIVER_DIR)
 
   OBJECTS += $(OUTDIR)/pcan_api.o \
 	$(OUTDIR)/pcan_drv.o \
@@ -79,19 +79,19 @@ CXXFLAGS += -O2 -g -Wall -Wextra -pthread \
 	$(DEFINES) \
 	$(HEADERS)
 
-LDFLAGS += -rpath /usr/local/lib
-
-LIBRARIES = -lpthread
-
-ifeq ($(VARIANT),STANDALONE)
-  LDFLAGS += -Wl,-framework -Wl,IOKit -Wl,-framework -Wl,CoreFoundation
-endif
+LDFLAGS  += -rpath /usr/local/lib
 
 ifeq ($(BINARY),UNIVERSAL)
 CFLAGS += -arch arm64 -arch x86_64
 CXXFLAGS += -arch arm64 -arch x86_64
 LDFLAGS += -arch arm64 -arch x86_64
 endif
+
+ifeq ($(VARIANT),STANDALONE)
+LDFLAGS += -Wl,-framework -Wl,IOKit -Wl,-framework -Wl,CoreFoundation
+endif
+
+LIBRARIES = -lpthread
 
 CXX = clang++
 CC = clang
@@ -102,7 +102,7 @@ ifeq ($(current_OS),Linux)  # linux - libpcanbasic.so
 
 DEFINES += 
 
-HEADERS += -I$(HOME_DIR)/Linux
+HEADERS += -I$(INCLUDE_DIR)/linux/pcanbasic
 
 OBJECTS += $(OUTDIR)/PCBUSB.o
 
@@ -131,6 +131,7 @@ CP = cp -f
 
 CHECKER  = warning,information
 IGNORE   = -i tester.c -i dosopt.c
+LEVEL    = exhaustive  # normal or exhaustive
 
 OUTDIR = .objects
 BINDIR = $(BIN_DIR)
@@ -155,7 +156,7 @@ incdir:
 	@mkdir -p $(INCDIR)
 
 check:
-	cppcheck --enable=$(CHECKER) --suppressions-list=$(HOME_DIR)/suppress.txt \
+	cppcheck --enable=$(CHECKER) --check-level=$(LEVEL) --suppressions-list=$(HOME_DIR)/suppress.txt \
 	-D__APPLE__ $(DEFINES) $(HEADERS) $(IGNORE) $(MAIN_DIR) $(MISC_DIR) 
 
 clean:
@@ -167,13 +168,14 @@ pristine:
 
 install:
 	@echo "Copying binary file..."
-	@-$(CP) $(TARGET) $(INSTALL)
+	@mkdir -p $(INSTALL)
+	$(CP) $(TARGET) $(INSTALL)
 
 
 $(OUTDIR)/main.o: $(MAIN_DIR)/main.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
-$(OUTDIR)/PCBUSB.o: $(WRAPPER_DIR)/PCBUSB.c
+$(OUTDIR)/PCBUSB.o: $(MISC_DIR)/PCBUSB.c
 	$(CC) $(CFLAGS) -MMD -MF $*.d -o $@ -c $<
 
 $(OUTDIR)/bitrates.o: $(MISC_DIR)/bitrates.c
@@ -212,8 +214,9 @@ $(OUTDIR)/pcan_log.o: $(DRIVER_DIR)/pcan_log.c
 
 $(TARGET): $(OBJECTS)
 	$(LD) $(LDFLAGS) -o $@ $(OBJECTS) $(LIBRARIES)
-	$(CP) $(TARGET) $(BINDIR)
 ifeq ($(current_OS),Darwin)
 	@lipo -archs $@
 endif
+	@mkdir -p $(BINDIR)
+	$(CP) $(TARGET) $(BINDIR)
 	@echo "\033[1mTarget '"$@"' successfully build\033[0m"

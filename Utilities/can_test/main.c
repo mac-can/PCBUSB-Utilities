@@ -7,7 +7,7 @@
  *  copyright :  (c) 2005-2012 by UV Software, Friedrichshafen
  *               (c) 2013-2025 by UV Software, Berlin
  *
- *  revision  :  $Rev: 2065 $ of $Date: 2024-12-30 16:48:19 +0100 (Mo, 30 Dez 2024) $
+ *  revision  :  $Rev: 2084 $ of $Date: 2025-02-28 22:33:11 +0100 (Fr, 28 Feb 2025) $
  * 
  *  author(s) :  Uwe Vogt, UV Software
  *
@@ -19,28 +19,28 @@
  *  CAN Tester (based on macOS Library for PCAN USB Interfaces)
  *
  *  (1) Standalone version with compiled PCBUSB sources
- * 
+ *
  *  This program is freeware without any warranty or support!
  *  Please note the copyright and license agreements.
  *
  *  Note: This version does not require the libPCBUSB to be installed.
  *
  *  (2) Open-source version with libPCBUSB support
- * 
- *  This program is free software: you can redistribute it and/or modify
+ *
+ *  This program is free software; you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, either version 2 of the License, or
+ *  the Free Software Foundation; either version 2 of the License, or
  *  (at your option) any later version.
  *
  *  This program is distributed in the hope that it will be useful,
  *  but WITHOUT ANY WARRANTY; without even the implied warranty of
  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  *  GNU General Public License for more details.
- * 
- *  You should have received a copy of the GNU General Public License
- *  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
- *  Note:  The libPCBUSB is licensed under a freeware license without any
+ *  You should have received a copy of the GNU General Public License along
+ *  with this program; if not, see <https://www.gnu.org/licenses/>.
+ *
+ *  Note: The libPCBUSB is licensed under a freeware license without any
  *  warranty or support.  The libPCBUSB is not part of this program.
  *  It can be downloaded from <https://www.mac-can.com/>.
  *
@@ -51,14 +51,14 @@
 #if (OPTION_PCBUSB_STANDALONE != 0)
 #define VERSION_MAJOR     0
 #define VERSION_MINOR     6
-#define VERSION_PATCH     1
+#define VERSION_PATCH     99
 #else
 #define VERSION_MAJOR     1
-#define VERSION_MINOR     0
+#define VERSION_MINOR     1
 #define VERSION_PATCH     99
 #endif
 #define VERSION_BUILD     BUILD_NO
-#define VERSION_STRING    TOSTRING(VERSION_MAJOR)"." TOSTRING(VERSION_MINOR) "." TOSTRING(VERSION_PATCH) " (" TOSTRING(BUILD_NO) ")"
+#define VERSION_STRING    TOSTRING(VERSION_MAJOR) "." TOSTRING(VERSION_MINOR) "." TOSTRING(VERSION_PATCH) " (" TOSTRING(BUILD_NO) ")"
 #if defined(__APPLE__)
 #define PLATFORM    "macOS"
 #elif defined(__linux__)
@@ -67,19 +67,16 @@
 #error Unsupported platform
 #endif
 #if defined(__APPLE__)
-static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN USB Interfaces, Version "VERSION_STRING;
-#else
-static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN Interfaces, Version "VERSION_STRING;
-#endif
-static const char COPYRIGHT[]   = "Copyright (c) 2007,2012-2025 by Uwe Vogt, UV Software, Berlin";
+static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN USB Interfaces, Version " VERSION_STRING;
+static const char COPYRIGHT[]   = "Copyright (c) 2005-2010,2012-2025 by Uwe Vogt, UV Software, Berlin";
 #if (OPTION_PCBUSB_STANDALONE != 0)
 static const char WARRANTY[]    = "This program is freeware without any warranty or support!";
 static const char LICENSE[]     = "This program is freeware without any warranty or support!\n\n" \
                                   "Note: This program does not require the libPCBUSB to be installed.";
 #else
-static const char WARRANTY[]    = "CAN Tester comes with ABSOLUTELY NO WARRANTY; for details type `--version'.\n\n" \
+static const char WARRANTY[]    = "This program comes with ABSOLUTELY NO WARRANTY!\n\n" \
                                   "This is free software, and you are welcome to redistribute it\n" \
-                                  "under certain conditions; type `--version' for details.";
+                                  "under certain conditions; type `can_test --version' for details.";
 static const char LICENSE[]     = "This program is free software; you can redistribute it and/or modify\n" \
                                   "it under the terms of the GNU General Public License as published by\n" \
                                   "the Free Software Foundation; either version 2 of the License, or\n" \
@@ -93,6 +90,21 @@ static const char LICENSE[]     = "This program is free software; you can redist
                                   "Note: The libPCBUSB is licensed under a freeware license without any\n" \
                                   "warranty or support.  The libPCBUSB is not part of this program.\n" \
                                   "It can be downloaded from <https://www.mac-can.com/>.";
+#endif
+#else
+static const char APPLICATION[] = "CAN Tester for PEAK-System PCAN Interfaces, Version " VERSION_STRING;
+static const char COPYRIGHT[]   = "Copyright (c) 2005-2010,2012-2025 by Uwe Vogt, UV Software, Berlin";
+static const char WARRANTY[]    = "This program comes with ABSOLUTELY NO WARRANTY!\n\n" \
+                                  "This is free software, and you are welcome to redistribute it\n" \
+                                  "under certain conditions; type `can_test --version' for details.";
+static const char LICENSE[]     = "This program is free software; you can redistribute it and/or modify\n" \
+                                  "it under the terms of the GNU General Public License as published by\n" \
+                                  "the Free Software Foundation; either version 2 of the License, or\n" \
+                                  "(at your option) any later version.\n\n" \
+                                  "This program is distributed in the hope that it will be useful,\n" \
+                                  "but WITHOUT ANY WARRANTY; without even the implied warranty of\n" \
+                                  "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n" \
+                                  "GNU General Public License for more details.";
 #endif
 
 /*  -----------  includes  -----------------------------------------------
@@ -224,7 +236,6 @@ int main(int argc, char *argv[])
         {"bitrate", required_argument, 0, 'B'},
         {"verbose", no_argument, 0, 'v'},
         {"mode", required_argument, 0, 'm'},
-        {"shared", no_argument, 0, 'S'},
         {"listen-only", no_argument, 0, 'M'},
         {"no-status-frames", no_argument, 0, 'S'},
         {"no-remote-frames", no_argument, 0, 'R'},
@@ -262,7 +273,7 @@ int main(int argc, char *argv[])
         return errno;
     }
     /* scan command-line */
-    while ((opt = getopt_long(argc, (char * const *)argv, "b:vm:rn:st:f:R:c:u:d:i:y:laLTvh", long_options, NULL)) != -1) {
+    while ((opt = getopt_long(argc, (char * const *)argv, "b:vm:rn:st:f:F:c:u:d:i:laLTvh", long_options, NULL)) != -1) {
         switch (opt) {
         /* option '--baudrate=<baudrate>' (-b) */
         case 'b':
@@ -311,14 +322,15 @@ int main(int argc, char *argv[])
             }
             verbose = 1;
             break;
-        /* option '--mode=(2.0|FDF[+BRS])' (-m)*/
+        /* option '--mode=(2.0|FDF[+BRS])' (-m) */
         case 'm':
             if (op++) {
                 fprintf(stderr, "%s: duplicated option `--mode' (%c)\n", basename(argv[0]), opt);
                 return 1;
             }
-            if (!strcasecmp(optarg, "default") || !strcasecmp(optarg, "classic") ||
-                !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0"))
+            if (!strcasecmp(optarg, "DEFAULT") || !strcasecmp(optarg, "CLASIC") || !strcasecmp(optarg, "CLASICAL") ||
+                !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0") ||
+                !strcasecmp(optarg, "CANCC") || !strcasecmp(optarg, "CCF") || !strcasecmp(optarg, "CC"))
                 op_mode = PCAN_MESSAGE_STANDARD;
             else if (!strcasecmp(optarg, "CANFD") || !strcasecmp(optarg, "FDF") || !strcasecmp(optarg, "FD"))
                 op_mode = PCAN_MESSAGE_FD;
@@ -500,17 +512,18 @@ int main(int argc, char *argv[])
                 return 1;
             }
             break;
-        /* option '--list-bitrates' */
+        /* option '--list-bitrates[=(2.0|FDF[+BRS])]' */
         case 'l':
             fprintf(stdout, "%s\n%s\n\n%s\n\n", APPLICATION, COPYRIGHT, WARRANTY);
             /* list bit-rates (depending on operation mode) */
             if (optarg != NULL) {
-                if (op != 0) {
+                if (op++) {
                     fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
                     return 1;
                 }
                 if (!strcasecmp(optarg, "default") || !strcasecmp(optarg, "classic") ||
-                    !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0"))
+                    !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0") ||
+                    !strcasecmp(optarg, "CANCC") || !strcasecmp(optarg, "CCF") || !strcasecmp(optarg, "CC"))
                     op_mode = PCAN_MESSAGE_STANDARD;
                 else if (!strcasecmp(optarg, "CANFD") || !strcasecmp(optarg, "FDF") || !strcasecmp(optarg, "FD"))
                     op_mode = PCAN_MESSAGE_FD;
@@ -886,6 +899,7 @@ static uint64_t tx_random(TPCANHandle channel, BYTE mode, uint32_t can_id, uint8
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
+    message.LEN = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);
@@ -1201,6 +1215,7 @@ static uint64_t tx_random_fd(TPCANHandle channel, BYTE mode, uint32_t can_id, ui
 
     fprintf(stderr, "\nPress ^C to abort.\n");
     message.ID  = (DWORD)can_id;
+    message.DLC = (BYTE)dlc;
     message.MSGTYPE = (TPCANMessageType)mode;
     fprintf(stdout, "\nTransmitting message(s)...");
     fflush (stdout);
@@ -1496,17 +1511,17 @@ static void usage(FILE *stream, const char *program)
     fprintf(stream, " -n, --number=<number>         check up-counting numbers starting with <number>\n");
     fprintf(stream, " -s, --stop                    stop on error (with option --number)\n");
     fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format\n");
-    fprintf(stream, "     --listen-only             monitor mode (transmitter is off)\n");
+    fprintf(stream, "     --listen-only             monitor mode (isten-only mode)\n");
     fprintf(stream, "     --no-status-frames        suppress reception of status frames\n");
     fprintf(stream, "     --no-remote-frames        suppress reception of remote frames\n");
     // fprintf(stream, "     --code=<id>               acceptance code for 11-bit IDs (default=0x%03X)\n", CODE_11BIT);
     // fprintf(stream, "     --mask=<id>               acceptance mask for 11-bit IDs (default=0x%03X)\n", MASK_11BIT);
     // fprintf(stream, "     --xtd-code=<id>           acceptance code for 29-bit IDs (default=0x%08X)\n", CODE_29BIT);
     // fprintf(stream, "     --xtd-mask=<id>           acceptance mask for 29-bit IDs (default=0x%08X)\n", MASK_29BIT);
-    fprintf(stream, " -b, --baudrate=<baudrate>     CAN 2.0 bit timing in kbps (default=250)\n");
-    fprintf(stream, "     --bitrate=<bit-rate>      CAN FD bit rate (as a string)\n");
-    fprintf(stream, " -v, --verbose                 show detailed bit rate settings\n");
-    fprintf(stream, " -y, --trace=(ON|OFF)          write a trace file (default=OFF)\n");
+    fprintf(stream, " -b, --baudrate=<baudrate>     CAN bit-timing in kbps (default=250)\n");
+    fprintf(stream, "     --bitrate=<bit-rate>      CAN bit-rate settings (as key/value list)\n");
+    fprintf(stream, " -v, --verbose                 show detailed bit-rate settings\n");
+    fprintf(stream, "     --trace=(ON|OFF)          write a trace file (default=OFF)\n");
     fprintf(stream, "Options for transmitter test:\n");
     fprintf(stream, " -t, --transmit=<time>         send messages for the given time in seconds, or\n");
     fprintf(stream, " -f, --frames=<number>,        alternatively send the given number of messages, or\n");
@@ -1517,10 +1532,10 @@ static void usage(FILE *stream, const char *program)
     fprintf(stream, " -i, --id=<can-id>             use given identifier (default=100h)\n");
     fprintf(stream, " -n, --number=<number>         set first up-counting number (default=0)\n");
     fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format\n");
-    fprintf(stream, " -b, --baudrate=<baudrate>     CAN 2.0 bit timing in kbps (default=250)\n");
-    fprintf(stream, "     --bitrate=<bit-rate>      CAN FD bit rate (as a string)\n");
-    fprintf(stream, " -v, --verbose                 show detailed bit rate settings\n");
-    fprintf(stream, " -y, --trace=(ON|OFF)          write a trace file (default=OFF)\n");
+    fprintf(stream, " -b, --baudrate=<baudrate>     CAN bit-timing in kbps (default=250)\n");
+    fprintf(stream, "     --bitrate=<bit-rate>      CAN bit-rate settings (as key/value list)\n");
+    fprintf(stream, " -v, --verbose                 show detailed bit-rate settings\n");
+    fprintf(stream, "     --trace=(ON|OFF)          write a trace file (default=OFF)\n");
     fprintf(stream, "Other options:\n");
     fprintf(stream, "     --list-bitrates[=<mode>]  list standard bit-rate settings and exit\n");
     fprintf(stream, " -L, --list-boards             list all supported CAN interfaces and exit\n");
