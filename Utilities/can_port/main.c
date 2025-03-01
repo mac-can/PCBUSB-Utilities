@@ -7,7 +7,7 @@
  *  copyright :  (c) 2008,2012 by UV Software, Friedrichshafen
  *               (c) 2013-2025 by UV Software, Berlin
  *
- *  revision  :  $Rev: 2086 $ of $Date: 2025-03-01 11:35:23 +0100 (Sa, 01 Mär 2025) $
+ *  revision  :  $Rev: 2088 $ of $Date: 2025-03-01 18:25:58 +0100 (Sat, 01 Mar 2025) $
  * 
  *  author(s) :  Uwe Vogt, UV Software
  *
@@ -131,7 +131,6 @@ static const char ACCEPTED[]    = "Security risks accepted. Continue with cautio
 #include "printmsg.h"
 #include "timer.h"
 
-#include "tcp_can.h"
 #include "tcp_server.h"
 #ifndef __APPLE__
 #include <linux/can.h>
