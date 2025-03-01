@@ -7,7 +7,7 @@
  *  copyright :  (c) 2005-2012 by UV Software, Friedrichshafen
  *               (c) 2013-2025 by UV Software, Berlin
  *
- *  revision  :  $Rev: 2085 $ of $Date: 2025-03-01 11:32:46 +0100 (Sat, 01 Mar 2025) $
+ *  revision  :  $Rev: 2087 $ of $Date: 2025-03-01 12:36:40 +0100 (Sa, 01 Mär 2025) $
  * 
  *  author(s) :  Uwe Vogt, UV Software
  *
@@ -51,11 +51,11 @@
 #if (OPTION_PCBUSB_STANDALONE != 0)
 #define VERSION_MAJOR     0
 #define VERSION_MINOR     6
-#define VERSION_PATCH     99
+#define VERSION_PATCH     2
 #else
 #define VERSION_MAJOR     1
 #define VERSION_MINOR     1
-#define VERSION_PATCH     99
+#define VERSION_PATCH     0
 #endif
 #define VERSION_BUILD     BUILD_NO
 #define VERSION_STRING    TOSTRING(VERSION_MAJOR) "." TOSTRING(VERSION_MINOR) "." TOSTRING(VERSION_PATCH) " (" TOSTRING(BUILD_NO) ")"
