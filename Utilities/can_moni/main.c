@@ -7,7 +7,7 @@
  *  copyright :  (c) 2007,2012 by UV Software, Friedrichshafen
  *               (c) 2013-2025 by UV Software, Berlin
  *
- *  revision  :  $Rev: 2084 $ of $Date: 2025-02-28 22:33:11 +0100 (Fr, 28 Feb 2025) $
+ *  revision  :  $Rev: 2086 $ of $Date: 2025-03-01 11:35:23 +0100 (Sa, 01 Mär 2025) $
  * 
  *  author(s) :  Uwe Vogt, UV Software
  *
@@ -252,23 +252,23 @@ int main(int argc, char *argv[])
     long unsigned freq = 0; struct btr_bit_timing slow, fast;
 
     struct option long_options[] = {
-        {"baudrate", required_argument, 0, 'b'},
-        {"bitrate", required_argument, 0, 'B'},
-        {"verbose", no_argument, 0, 'v'},
-        {"mode", required_argument, 0, 'm'},
-        {"listen-only", no_argument, 0, 'M'},
-        {"no-status-frames", no_argument, 0, 'S'},
-        {"no-remote-frames", no_argument, 0, 'R'},
-        {"code", required_argument, 0, '1'},
-        {"mask", required_argument, 0, '2'},
-        {"xtd-code", required_argument, 0, '3'},
-        {"xtd-mask", required_argument, 0, '4'},
         {"time", required_argument, 0, 't'},
         {"id", required_argument, 0, 'i'},
         {"data", required_argument, 0, 'd'},
         {"ascii", required_argument, 0, 'a'},
         {"exclude", required_argument, 0, 'x'},
-        {"trace", required_argument, 0, 'y'},
+        {"baudrate", required_argument, 0, 'b'},
+        {"bitrate", required_argument, 0, 'B'},
+        {"verbose", no_argument, 0, 'v'},
+        {"mode", required_argument, 0, 'm'},
+        {"listen-only", no_argument, 0, 'M'},
+        {"no-status-frames", no_argument, 0, 'E'},
+        {"no-remote-frames", no_argument, 0, 'R'},
+        {"code", required_argument, 0, '1'},
+        {"mask", required_argument, 0, '2'},
+        {"xtd-code", required_argument, 0, '3'},
+        {"xtd-mask", required_argument, 0, '4'},
+        {"trace", required_argument, 0, 'Y'},
         {"list-bitrates", optional_argument, 0, 'l'},
         {"list-boards", no_argument, 0, 'L'},
         {"test-boards", no_argument, 0, 'T'},
@@ -346,7 +346,7 @@ int main(int argc, char *argv[])
                 fprintf(stderr, "%s: duplicated option `--mode' (%c)\n", basename(argv[0]), opt);
                 return 1;
             }
-            if (!strcasecmp(optarg, "DEFAULT") || !strcasecmp(optarg, "CLASIC") || !strcasecmp(optarg, "CLASICAL") ||
+            if (!strcasecmp(optarg, "DEFAULT") || !strcasecmp(optarg, "CLASSIC") || !strcasecmp(optarg, "CLASSICAL") ||
                 !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0") ||
                 !strcasecmp(optarg, "CANCC") || !strcasecmp(optarg, "CCF") || !strcasecmp(optarg, "CC"))
                 op_mode = PCAN_MESSAGE_STANDARD;
@@ -368,7 +368,7 @@ int main(int argc, char *argv[])
             listenonly = PCAN_PARAMETER_ON;
             break;
         /* option '--no-status-frames' */
-        case 'S':
+        case 'E':
             if (sf++) {
                 fprintf(stderr, "%s: duplicated option `--no-status-frames'\n", basename(argv[0]));
                 return 1;
@@ -447,8 +447,8 @@ int main(int argc, char *argv[])
             }
             xtd_mask = (DWORD)intarg;
             break;
-        /* option '--trace=(ON|OFF)' (-y) */
-        case 'y':
+        /* option '--trace=(ON|OFF)' */
+        case 'Y':
             if (ts++) {
                 fprintf(stderr, "%s: duplicated option `--trace'\n", basename(argv[0]));
                 return 1;
@@ -548,7 +548,7 @@ int main(int argc, char *argv[])
                     fprintf(stderr, "%s: option `--list-bitrates' - operation mode already set'\n", basename(argv[0]));
                     return 1;
                 }
-                if (!strcasecmp(optarg, "default") || !strcasecmp(optarg, "classic") ||
+                if (!strcasecmp(optarg, "DEFAULT") || !strcasecmp(optarg, "CLASSIC") || !strcasecmp(optarg, "CLASSICAL") ||
                     !strcasecmp(optarg, "CAN2.0") || !strcasecmp(optarg, "CAN20") || !strcasecmp(optarg, "2.0") ||
                     !strcasecmp(optarg, "CANCC") || !strcasecmp(optarg, "CCF") || !strcasecmp(optarg, "CC"))
                     op_mode = PCAN_MESSAGE_STANDARD;
@@ -1122,13 +1122,13 @@ static void usage(FILE *stream, const char *program)
     fprintf(stream, " -i  --id=(HEX|DEC|OCT)        display mode of CAN-IDs (default=HEX)\n");
     fprintf(stream, " -d, --data=(HEX|DEC|OCT)      display mode of data bytes (default=HEX)\n");
     fprintf(stream, " -a, --ascii=(ON|OFF)          display data bytes in ASCII (default=ON) \n");
-    fprintf(stream, " -x, --exclude=[~]<id-list>    exclude CAN-IDs: <id>[-<id>]{,<id>[-<id>]}\n");
+    fprintf(stream, " -x, --exclude=[~]<id-list>    exclude CAN-IDs: <id-list>=<id>[-<id>]{,<id>[-<id>]}\n");
     fprintf(stream, "     --code=<id>               acceptance code for 11-bit IDs (default=0x%03X)\n", CODE_11BIT);
     fprintf(stream, "     --mask=<id>               acceptance mask for 11-bit IDs (default=0x%03X)\n", MASK_11BIT);
     fprintf(stream, "     --xtd-code=<id>           acceptance code for 29-bit IDs (default=0x%08X)\n", CODE_29BIT);
     fprintf(stream, "     --xtd-mask=<id>           acceptance mask for 29-bit IDs (default=0x%08X)\n", MASK_29BIT);
-    fprintf(stream, " -m, --mode=(2.0|FDF[+BRS])    CAN operation mode: CAN 2.0 or CAN FD format\n");
-    fprintf(stream, "     --listen-only             monitor mode (isten-only mode)\n");
+    fprintf(stream, " -m, --mode=(CCF|FDF[+BRS])    CAN operation mode: CAN CC or CAN FD\n");
+    fprintf(stream, "     --listen-only             monitor mode (listen-only mode)\n");
     fprintf(stream, "     --no-status-frames        suppress reception of status frames\n");
     fprintf(stream, "     --no-remote-frames        suppress reception of remote frames\n");
     fprintf(stream, " -b, --baudrate=<baudrate>     CAN bit-timing in kbps (default=250)\n");
