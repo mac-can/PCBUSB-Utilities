@@ -1,0 +1,7 @@
+.svn
+# not needed yet
+CanTcpServer.*
+CanTcpClient.*
+RocketCAN.*
+tcp_can.h
+crc*.*

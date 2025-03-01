@@ -1,0 +1,7 @@
+Definitions for CAN network layer (socket addr / CAN frame / CAN filter)
+========================================================================
+
+If the file include/linux/can.h is missing on your computer, copy it from
+https://github.com/linux-can/can-utils/blob/master/include/linux/can.h
+
+Enjoy.

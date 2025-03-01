@@ -17,9 +17,10 @@ See the [MacCAN](https://www.mac-can.com/) website to learn more.
 
 ## PCBUSB Utilities
 
-This repo offers two CAN command line tools that are build upon the PCBUSB library:
+This repo offers three CAN command line tools that are build upon the PCBUSB library:
 - `can_moni` to view incoming CAN messages
 - `can_test` to test CAN communication
+- `can_port` to run CAN over Ethernet
 
 _Note: These utilities can also be build and used on Linux with PEAK's chardev driver._
 
@@ -38,6 +39,16 @@ Type `can_moni --help` to display all program options.
 Originally developed for electronic environmental tests on an embedded Linux system with SocketCAN, I´m using it for many years as a traffic generator for CAN stress-tests.
 
 Type `can_test --help` to display all program options.
+
+#### can_port
+
+`can_port` is a command line tool designed to open a network socket for CAN-to-Ethernet communication.
+It connects to a CAN device and handles the data exchange between the CAN bus and local or remote clients.
+
+_Be aware that runing this program may expose your computer to security vulnerabilities, unauthorized access, data interception, denial of service attacks, and resource exhaustion.
+Implement appropriate security measures to mitigate these risks._
+
+Type `can_port --help` to display all program options.
 
 ### Target Platform
 
@@ -61,14 +72,14 @@ Type `can_test --help` to display all program options.
 ### Required Library
 
 #### macOS
-- libPCBUSB.x.y.dylib - Version 0.13 or later (Latest is Greatest!)
+- `libPCBUSB.x.y.dylib` - Version 0.13 or later _(Latest is Greatest!)_
 
 #### Linux
 - libpcanbasic.so - PCAN Driver and Library for Linux, Version 8.20
 
 ### Supported Devices
 
-Only the following devices from PEAK-System Technik are supported:
+Only the following devices from PEAK-System Technik are supported under macOS:
 - PCAN-USB (product code: IPEH-002021, IPEH-002022)
 - PCAN-USB FD (product code: IPEH-004022)
 - PCAN-USB Pro FD (item no. IPEH-004061), but only the first channel (CAN1)

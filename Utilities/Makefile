@@ -23,22 +23,27 @@ all:
 	@echo "\033[1mBuilding my beloved CAN Utilities...\033[0m"
 	$(MAKE) -C can_test $@
 	$(MAKE) -C can_moni $@
+	$(MAKE) -C can_port $@
 
 clean:
 	$(MAKE) -C can_test $@
 	$(MAKE) -C can_moni $@
+	$(MAKE) -C can_port $@
 
 pristine:
 	$(MAKE) -C can_test $@
 	$(MAKE) -C can_moni $@
+	$(MAKE) -C can_port $@
 
 install:
 #	$(MAKE) -C can_test $@
 #	$(MAKE) -C can_moni $@
+#	$(MAKE) -C can_port $@
 
 check:
 	$(MAKE) -C can_test $@ 2> checker_test.txt
 	$(MAKE) -C can_moni $@ 2> checker_moni.txt
+	$(MAKE) -C can_port $@ 2> checker_port.txt
 
 build_no:
 	@./build_no.sh

@@ -1,0 +1,15 @@
+Definitions for CAN network layer (socket addr / CAN frame / CAN filter)
+========================================================================
+
+The file include/linux/can.h was taken from the following GitHub repo:
+URL: https://github.com/linux-can/can-utils/blob/master/include/linux/can.h
+SHA: 99c5c1479054ac9579940d2942fd10e9cf7ada04
+
+The file is licensed under the terms of the BSD 3-Clause License or,
+alternatively, under the terms of the GNU GeneralPublic License ("GPL")
+version 2; see file include/linux/can.h for details.
+
+The file has been slightly modified to make it compilable under Mac OS X.
+
+Uwe Vogt, UV Software
+Berlin, 02/12/25
