@@ -2,9 +2,9 @@ echo "/*  -- Do not commit this file --" > ./build_no.h
 echo " *" >> ./build_no.h
 echo " *  project   :  CAN - Controller Area Network" >> ./build_no.h
 echo " *" >> ./build_no.h
-echo " *  purpose   :  CAN Tester (based on macOS Library for PCAN-USB Interfaces)" >> ./build_no.h
+echo " *  purpose   :  CAN Utilities (based on macOS Library for PCAN-USB Interfaces)" >> ./build_no.h
 echo " *" >> ./build_no.h
-echo " *  copyright :  (C) 2019,2023 UV Software, Berlin" >> ./build_no.h
+echo " *  copyright :  (C) 2005-2025 UV Software, Berlin" >> ./build_no.h
 echo " *" >> ./build_no.h
 echo " *  author(s) :  Uwe Vogt, UV Software" >> ./build_no.h
 echo " *" >> ./build_no.h
