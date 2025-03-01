@@ -9,5 +9,4 @@ Utilities/Driver
 Utilities/Binaries
 Utilities/can_moni/can_moni
 Utilities/can_test/can_test
-Utilities/can_moni/build_no.h
-Utilities/can_test/build_no.h
+Utilities/can_port/can_port
