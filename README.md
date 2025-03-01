@@ -44,25 +44,27 @@ Type `can_test --help` to display all program options.
 - macOS 13.0 and later (Intel and Apple silicon)
 - Debian GNU/Linux 12 (Linux Kernel 6.x)
 
-### Development Environment
+### Development Environments
 
 #### macOS Sequoia
-
-- macOS Sequoia (15.2) on a Mac mini (M1, 2020)
+- macOS Sequoia (15.3.1) on a Mac mini (M4 Pro, 2024)
 - Apple clang version 16.0.0 (clang-1600.0.26.6)
 
 #### macOS Ventura
-
-- macOS Ventura (13.7.2) on a MacBook Pro (2019)
+- macOS Ventura (13.7.4) on a MacBook Pro (2019)
 - Apple clang version 14.0.3 (clang-1403.0.22.14.1)
 
 #### Debian 12.9 ("bookworm")
-- Debian 6.1.123-1 (2024-11-22) x86_64 GNU/Linux
+- Debian 6.1.128-1 (2025-02-07) x86_64 GNU/Linux
 - gcc (Debian 12.2.0-14) 12.2.0
-- PCAN Driver and Library for Linux v8.19
 
-### Required PCBUSB Library
-libPCBUSB.x.y.dylib - Version 0.13 or later (Latest is Greatest!)
+### Required Library
+
+#### macOS
+- libPCBUSB.x.y.dylib - Version 0.13 or later (Latest is Greatest!)
+
+#### Linux
+- libpcanbasic.so - PCAN Driver and Library for Linux, Version 8.20
 
 ### Supported Devices
 
@@ -115,7 +117,7 @@ It can be downloaded from <https://www.mac-can.com/>.
 
 ### Trademarks
 
-Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries. \
+Mac and macOS are trademarks of Apple Inc., registered in the U.S. and other countries and regions. \
 PCAN is a registered trademark of PEAK-System Technik GmbH, Darmstadt, Germany. \
 POSIX is a registered trademark of the Institute of Electrical and Electronic Engineers, Inc. \
 GNU C/C++ is a registered trademark of Free Software Foundation, Inc. \
