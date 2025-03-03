@@ -130,5 +130,5 @@ _If you connect your CAN device to a real CAN network when using these utilities
 
 ### Contact
 
-E-Mail: mailto://info@mac.can.com \
+E-Mail: mailto://info@mac-can.com \
 Internet: https://www.mac-can.com
