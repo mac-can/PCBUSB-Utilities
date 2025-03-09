@@ -10,3 +10,11 @@ Utilities/Binaries
 Utilities/can_moni/can_moni
 Utilities/can_test/can_test
 Utilities/can_port/can_port
+*.json
+*.xml
+*.log
+*.dat
+*.trc
+*.csv
+*.pdf
+*.bak
