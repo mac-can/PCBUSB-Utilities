@@ -151,6 +151,7 @@ static const char ACCEPTED[]    = "Security risks accepted. Continue with cautio
 
 #include <sys/time.h>
 #include <sys/types.h>
+#include <arpa/inet.h>
 
 #include <inttypes.h>
 #include <assert.h>
@@ -483,10 +484,10 @@ int main(int argc, char *argv[])
                 fprintf(stderr, "%s: illegal argument for option `--logging'\n", basename(argv[0]));
                 return 1;
             }
-            if ((intarg < 0) || (3 < intarg)) {
-                fprintf(stderr, "%s: illegal argument for option --logging'\n", basename(argv[0]));
-                return 1;
-            }
+            // if ((intarg < 0) || (3 < intarg)) {
+            //     fprintf(stderr, "%s: illegal argument for option --logging'\n", basename(argv[0]));
+            //     return 1;
+            // }
             logging = (int)intarg;
             break;
         /* option '--security-risks="I ACCEPT"' */
@@ -495,7 +496,7 @@ int main(int argc, char *argv[])
                 fprintf(stderr, "%s: duplicated option `--security-risks'\n", basename(argv[0]));
                 return 1;
             }
-            if (!strcmp(optarg, "I ACCECP"))
+            if (!strcmp(optarg, "I ACCEPT"))
                 risks = 1;
             break;
         /* option '--list-bitrates[=(2.0|FDF[+BRS])]' */
@@ -970,6 +971,7 @@ static int transmit(const void *data, size_t size, void *hint)
 {
     struct can_frame *packet = (struct can_frame*)data;
     TPCANHandle channel = *(TPCANHandle*)hint;
+    TPCANStatus status;
     TPCANMsg message;
 
     if ((data == NULL) || (hint == NULL))
@@ -983,17 +985,23 @@ static int transmit(const void *data, size_t size, void *hint)
     message.ID = packet->can_id & CAN_EFF_MASK;
     message.MSGTYPE |= (packet->can_id & CAN_EFF_FLAG) ? PCAN_MESSAGE_EXTENDED : PCAN_MESSAGE_STANDARD;
     message.MSGTYPE |= (packet->can_id & CAN_RTR_FLAG) ? PCAN_MESSAGE_RTR : 0U;
-    message.MSGTYPE |= (packet->can_id & CAN_ERR_FLAG) ? PCAN_MESSAGE_STATUS : 0U;
+    message.MSGTYPE |= (packet->can_id & CAN_ERR_FLAG) ? PCAN_MESSAGE_ERRFRAME : 0U;
     message.LEN = (packet->len < CAN_MAX_DLEN) ? packet->len : CAN_MAX_DLEN;
     memcpy(message.DATA, packet->data, CAN_MAX_DLEN);
-    // send it on the CAN bus
-    return (int)CAN_Write(channel, &message);  // TODO: retry loop w/ timeout
+    // send it on the CAN bus (retry if busy (w/ timeout))
+    timer_restart(TIMER_GPT0, TIMER_MSEC(55U));
+    do {
+        status = CAN_Write(channel, &message);
+    } while ((status & (PCAN_ERROR_QXMTFULL | PCAN_ERROR_XMTFULL)) && !timer_timeout(TIMER_GPT0));
+    // return error code
+    return (int)status;
 }
 
 static int transmit_fd(const void *data, size_t size, void *hint)
 {
     struct canfd_frame *packet = (struct canfd_frame*)data;
     TPCANHandle channel = *(TPCANHandle*)hint;
+    TPCANStatus status;
     TPCANMsgFD message;
 
     if ((data == NULL) || (hint == NULL))
@@ -1007,14 +1015,19 @@ static int transmit_fd(const void *data, size_t size, void *hint)
     message.ID = packet->can_id & CAN_EFF_MASK;
     message.MSGTYPE |= (packet->can_id & CAN_EFF_FLAG) ? PCAN_MESSAGE_EXTENDED : PCAN_MESSAGE_STANDARD;
     message.MSGTYPE |= (packet->can_id & CAN_RTR_FLAG) ? PCAN_MESSAGE_RTR : 0U;
-    message.MSGTYPE |= (packet->can_id & CAN_ERR_FLAG) ? PCAN_MESSAGE_STATUS : 0U;
+    message.MSGTYPE |= (packet->can_id & CAN_ERR_FLAG) ? PCAN_MESSAGE_ERRFRAME : 0U;
     message.MSGTYPE |= (packet->flags & CANFD_FDF) ? PCAN_MESSAGE_FD : 0U;
     message.MSGTYPE |= (packet->flags & CANFD_BRS) ? PCAN_MESSAGE_BRS : 0U;
     message.MSGTYPE |= (packet->flags & CANFD_ESI) ? PCAN_MESSAGE_ESI : 0U;
     message.DLC = len2dlc(packet->len);
     memcpy(message.DATA, packet->data, CANFD_MAX_DLEN);
-    // send it on the CAN bus
-    return (int)CAN_WriteFD(channel, &message);  // TODO: retry loop w/ timeout
+    // send it on the CAN bus (retry if busy (w/ timeout))
+    timer_restart(TIMER_GPT0, TIMER_MSEC(55U));
+    do {
+        status = CAN_WriteFD(channel, &message);
+    } while ((status & (PCAN_ERROR_QXMTFULL | PCAN_ERROR_XMTFULL)) && !timer_timeout(TIMER_GPT0));
+    // return error code
+    return (int)status;
 }
 
 static uint8_t dlc2len(uint8_t dlc)

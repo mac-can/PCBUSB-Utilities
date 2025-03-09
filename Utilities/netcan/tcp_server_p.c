@@ -535,7 +535,14 @@ static void *listening(void *arg) {
                         server->recv_pkg++;
                         /* notify the server application */
                         if (server->recv_cbk != NULL) {
+#if (0)
                             if ((rc = server->recv_cbk(buf, nbytes, server->recv_ref)) < 0) {
+#else
+                            /* note: this fix is for Peak's PCANBasic return codes, which are unsigned 32-bit values.
+                             *       CAN API Vx, in contrast, defines that error codes must be negative numbers!
+                             */
+                            if ((rc = server->recv_cbk(buf, nbytes, server->recv_ref)) != 0) {
+#endif
                                 LOG_ERROR(server, "Receive callback failed for socket %d (error=%d)", i, rc);
                                 server->lost_pkg++;
                             }
