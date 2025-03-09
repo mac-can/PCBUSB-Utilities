@@ -6,6 +6,7 @@
 //  ATTENTION: Make sure that the server is configured to receive CAN FD frames!
 //
 #include <stdio.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 #include <signal.h>
@@ -16,6 +17,7 @@
 #include "mac/can.h"
 #endif
 #include "tcp_client.h"
+#include <arpa/inet.h>
 
 #ifndef FRAMES
 #define FRAMES 2048U
